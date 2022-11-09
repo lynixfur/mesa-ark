@@ -44,4 +44,21 @@ const DevInfo = () => (
     </div>
 )
 
+export async function getServerSideProps() {
+  console.log("[ShadowmaneAPI] DEBUG: Fetched Server List");
+
+  const servers_res = await fetch(
+    "https://mesa-ark.com/api/servers"
+  );
+
+
+ var servers = await servers_res.json();
+
+  return {
+    props: {
+      servers,
+    },
+  };
+}
+
 export default DevInfo
