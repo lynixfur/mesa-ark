@@ -11,6 +11,7 @@ type Data = {
 
 type Page = any;
 type CurrentPage = string;
+type Search = any;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 
@@ -18,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const ranking_data = await prisma.advancedachievements_tribedata.findMany({ 
     where: {
       TribeName: {
-        contains: search
+        contains: search as Search
       }
     },
     orderBy: {
@@ -42,11 +43,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   var prev_page = null;
 
   if(current_page < 69) {
-    next_page = `https://bloody-ark.com/api/hub/tribe_rankings?page=${parseInt(current_page) + 1}&search=${search}`;
+    next_page = `https://bloody-ark.com/api/hub/tribe_rankings?page=${parseInt(current_page as CurrentPage) + 1}&search=${search}`;
   }
 
   if(current_page > 0) {
-    prev_page = `https://bloody-ark.com/api/hub/tribe_rankings?page=${parseInt(current_page) - 1}&search=${search}`;
+    prev_page = `https://bloody-ark.com/api/hub/tribe_rankings?page=${parseInt(current_page as CurrentPage) - 1}&search=${search}`;
   }
 
   /* Return All Required Data */
