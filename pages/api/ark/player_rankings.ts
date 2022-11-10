@@ -54,17 +54,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     var prev_page = null;
   
     if(current_page < Math.round(pages / 20)) {
-      next_page = `https://mesa-ark.com/api/ark/rankings?page=${parseInt(current_page as CurrentPage) + 1}&search=${search}`;
+      next_page = `https://mesa-ark.com/api/ark/player_rankings?page=${parseInt(current_page as CurrentPage) + 1}&search=${search}`;
     }
   
     if(current_page > 0) {
-      prev_page = `https://mesa-ark.com/api/ark/rankings?page=${parseInt(current_page as CurrentPage) - 1}&search=${search}`;
+      prev_page = `https://mesa-ark.com/api/ark/player_rankings?page=${parseInt(current_page as CurrentPage) - 1}&search=${search}`;
     }
 
   /* Return All Required Data */
   res.status(200).send({
     pagination: {
-      total_pages: Math.round(pages / 20),
       current_page: parseInt(current_page as CurrentPage),
       next: next_page,
       prev: prev_page
