@@ -1,12 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../../components/navbar";
-import HomeHeader from "../../components/headers/homeHeader";
 import axios from "axios";
 import ReactMarkdown from 'react-markdown'
-import Footer from "../../components/footer";
 
-export async function getServerSideProps({ params }) {
+type Params = {
+  params: any
+}
+
+export async function getServerSideProps({ params }: Params) {
   const id = params.id;
   const res = await fetch(`http://bloody-ark.com:3000/api/wiki/${id}`);
   const list_res = await fetch(`http://bloody-ark.com:3000/api/wiki/page_list`);
@@ -21,7 +23,12 @@ export async function getServerSideProps({ params }) {
   };
 }
 
-function ServerList({wiki_data, page_list}) {
+type InfoProps = {
+  wiki_data: any,
+  page_list: any
+}
+
+function ServerList({wiki_data, page_list}: InfoProps) {
   return (
     <>
       <Head>
@@ -36,9 +43,9 @@ function ServerList({wiki_data, page_list}) {
           referrerPolicy="no-referrer"
         />
       </Head>
-      <Navbar darken={true}/>
+      <Navbar links={null}/>
 
-      <div className="pt-[72px] w-full">
+      <div className="w-full">
   <div className="h-full w-full" style={{background: 'url(' + wiki_data?.bg_image + ')', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
     <div className="w-full h-full bg-bgray-bg bg-opacity-70">
       <div className="flex h-full px-3 py-4 sm:p-10 md:p-0">
@@ -63,19 +70,17 @@ function ServerList({wiki_data, page_list}) {
     <div className="block md:flex w-full min-w-full">
         <ul className="flex-col py-2 space-y-1 text-gray-300 px-2 mt-10 w-full md:w-64 md:border-r border-gray-700">
           <span className="px-3 py-2 text-gray-400 text-sm font-bold">Information</span>
-          {page_list.map((page_link) => (
-                      <a href={"/wiki/" + page_link?.str_id} alt={page_link?.title} className="transition-colors duration-300 flex items-center w-full py-2.5 px-3 mt-2 rounded text-forward hover:bg-bgray-overlay">
+          {page_list.map((page_link: any) => (
+                      <a href={"/info/" + page_link?.str_id} className="transition-colors duration-300 flex items-center w-full py-2.5 px-3 mt-2 rounded text-forward hover:bg-bgray-overlay">
                       <i className={page_link?.page_icon + " m-1 my-auto text-xl text-gray-500"} />
                       <span className="ml-2 text-md font-bold">{page_link?.title}</span>
                     </a>
           ))}
         </ul>
         <div className="w-full mt-5 md:mt-16 px-5 md:px-10 mb-20">
-          <ReactMarkdown className="w-full prose dark:prose-invert max-w-none break-words">{wiki_data.content}</ReactMarkdown>
+          <ReactMarkdown className="w-full prose max-w-none break-words">{wiki_data.content}</ReactMarkdown>
         </div>
     </div>
-    <Footer/>
-
     </>
   );
 }

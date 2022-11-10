@@ -26,7 +26,7 @@ const Navbar = ({ links }: Props) => (
         <a href="/servers" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Servers</a>
       </li>
       <li>
-        <a href="#" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Leaderboards</a>
+        <a href="/leaderboards" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Leaderboards</a>
       </li>
     </ul>
   </div>

@@ -9,7 +9,6 @@ type Data = {
   ranking_data: any
 }
 
-type Page = any;
 type CurrentPage = string;
 type Search = any;
 
@@ -25,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     orderBy: {
       DamageScore: 'desc',
     },
-    skip: 20 * (req.query.page as Page ? req.query.page as Page : 0), // Page ID
+    skip: 20 * (parseInt(req.query.page as string) ? parseInt(req.query.page as string) : 0), // Page ID
     take: 20,
     select: { TribeName: true, DamageScore: true}
   });
