@@ -56,7 +56,7 @@ The cluster wants to provide the experience closest to the official server.</p>
         <h2 className="font-extrabold uppercase text-mesa-gray text-4xl pb-5 text-center">We have <span className="text-mesa-orange">CROSS-PLATFORM</span> Clusters!</h2>
         <p className="text-center font-bold">Whether You enjoy <span className="text-green-600">XBOX</span> or <span className="text-mesa-blue">PC</span> you can play at the comfort of your battle station on Mesa ARK! Visit our Clusters!</p>
         <div className="px-20 flex justify-center mt-5">
-          <div className="grid grid-cols-2 gap-4 w-[50%]">
+          <div className="grid sm:grid-cols-2 grid-cols-1 gap-4 sm:w-[50%] w-full">
             <div className="bg-mesa-gray shadow-xl shadow-mesa-orange/70 p-5">
               <h2 className="text-xl text-mesa-orange font-extrabold text-center">PC CLUSTER</h2>
               <p className="text-md text-white text-center font-bold my-10">
