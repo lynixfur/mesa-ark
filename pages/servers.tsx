@@ -30,17 +30,17 @@ const ServerList = ({servers}: ServerProps) => (
 
       <h2 className="font-extrabold uppercase text-mesa-gray text-4xl mb-5">SERVER LIST TEST</h2>
 
+        <div className="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mb-5">
+          {servers.map((server: any) => (
+            <p>{server.name} - {server.connection_url.replace("steam://connect/","")}</p>
+          ))}
+        </div>
+
         <button className="mb-2 md:mb-0 bg-mesa-orange shadow-xl shadow-mesa-orange/50 px-4 py-2 tracking-wider text-white uppercase inline-flex items-center space-x-2 font-bold">
             <div className="flex"><span className="ml-1">Reload</span><i className="fa-solid fa-circle text-green-500 animate-pulse my-auto ml-2" /></div>
         </button>
     
       </section>
-
-      <div className="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        {servers.map((server: any) => (
-          <p>{server.name} - {server.connection_url.replace("steam://connect/","")}</p>
-        ))}
-      </div>
 
 
       <footer className="bg-mesa-gray body-font w-full">
@@ -63,7 +63,6 @@ export async function getServerSideProps() {
 
 
  var servers = await servers_res.json();
- console.log(servers);
 
   return {
     props: {
