@@ -1,18 +1,18 @@
 import { PrismaClient } from '@prisma/client'
-import { getLoginSession } from "../../../lib/auth";
+import { NextApiRequest, NextApiResponse } from 'next';
 
 
 const prisma = new PrismaClient()
 
+type Data = {
+  pagination: any,
+  ranking_data: any
+}
 
-export default async function handler(req, res) {
-  
-  const session = await getLoginSession(req)
-  const user = session;
-  if(!user) {
-      res.status(403).json({error: 'Unauthorized access', error_code: 1500});
-      return;
-  }
+type Page = any;
+type CurrentPage = string;
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 
   const search = req.query.search ? req.query.search : ""
   const ranking_data = await prisma.advancedachievements_tribedata.findMany({ 
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     orderBy: {
       DamageScore: 'desc',
     },
-    skip: 20 * (req.query.page ? req.query.page : 0), // Page ID
+    skip: 20 * (req.query.page as Page ? req.query.page as Page : 0), // Page ID
     take: 20,
     select: { TribeName: true, DamageScore: true}
   });
@@ -53,7 +53,7 @@ export default async function handler(req, res) {
   res.status(200).send({
     pagination: {
       total_pages: Math.round(pages / 20) - 1,
-      current_page: parseInt(current_page),
+      current_page: parseInt(current_page as CurrentPage),
       next: next_page,
       prev: prev_page
     },
