@@ -184,4 +184,18 @@ Note:<br />
     </div>
 )
 
+export async function getServerSideProps() {
+  const res_player_count = await fetch(
+    "https:/mesa-ark.com/api/player_count"
+  );
+
+  const player_count = await res_player_count.json();
+
+  return {
+    props: {
+      player_count,
+    },
+  };
+}
+
 export default Home
