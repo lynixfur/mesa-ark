@@ -16,7 +16,7 @@ const header_style_2 = {
   backgroundPosition: 'center'
 }
 
-const Home = () => (
+const Home = ({player_count}: any) => (
     <div className="">
       <Head>
         <title>MESArk</title>
@@ -41,7 +41,7 @@ The cluster wants to provide the experience closest to the official server.</p>
                <div className="flex justify-center items-center space-x-3">
                   <span className="relative inline-flex hidden"><a href="https://hub.bloody-ark.com" className="inline-flex items-center  px-4 py-2 font-bold leading-6 text-md shadow rounded-full text-gray-100 bg-bred-2 transition ease-in-out duration-150"> <i className="fa-solid fa-cube m-1 mr-2 my-auto text-xl text-gray-100" /> {/* */}Access Hub</a></span>
                   <button className="mb-2 md:mb-0 bg-mesa-orange shadow-xl shadow-mesa-orange/50 px-4 py-2 tracking-wider text-white uppercase inline-flex items-center space-x-2 font-bold">
-                     <div className="flex"><span className="ml-1">0 Survivors</span><i className="fa-solid fa-circle text-green-500 animate-pulse my-auto ml-2" /></div>
+                     <div className="flex"><span className="ml-1">{player_count.players} Survivors</span><i className="fa-solid fa-circle text-green-500 animate-pulse my-auto ml-2" /></div>
                   </button>
                </div>
             </div>
@@ -118,9 +118,9 @@ The cluster wants to provide the experience closest to the official server.</p>
           Every donation or buy on the shop is devolved to grow the community! <br />
         </p>
         <div className="flex justify-center">
-          <button className="mt-5 mb-2 md:mb-0 bg-mesa-blue shadow-xl shadow-mesa-blue/50 px-4 py-2 tracking-wider text-white uppercase inline-flex items-center space-x-2 font-bold">
+          <a href="https://shop.mesa-ark.com" className="mt-5 mb-2 md:mb-0 bg-mesa-blue shadow-xl shadow-mesa-blue/50 px-4 py-2 tracking-wider text-white uppercase inline-flex items-center space-x-2 font-bold">
             <div className="flex"><span className="ml-1">VISIT THE SHOP</span><i className="fa-solid fa-circle text-green-500 animate-pulse my-auto ml-2" /></div>
-          </button>
+          </a>
         </div>
       </section>
 
