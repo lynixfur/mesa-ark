@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,4 +5,69 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model advancedachievements_daily_playerdata {
+  SteamID            BigInt  @id @unique(map: "SteamID_UNIQUE")
+  PlayerName         String? @db.VarChar(50)
+  SteamName          String? @db.VarChar(60)
+  TribeName          String? @db.VarChar(70)
+  TribeID            Int?    @default(0)
+  PlayTime           BigInt? @default(0)
+  PlayerKills        BigInt? @default(0)
+  DinoKills          BigInt? @default(0)
+  WildDinoKills      BigInt? @default(0)
+  DinosTamed         BigInt? @default(0)
+  DeathByPlayer      BigInt? @default(0)
+  DeathByDino        BigInt? @default(0)
+  DeathByWildDino    BigInt? @default(0)
+  achievements       Bytes?  @db.Blob
+  OncePerCharCommand Bytes?  @db.Blob
+}
+
+model advancedachievements_daily_playerdata_custom {
+  steam_id BigInt
+  keyword  String @db.VarChar(50)
+  value    BigInt
+
+  @@id([steam_id, keyword])
+  @@unique([steam_id, keyword], map: "Unique")
+}
+
+model advancedachievements_int64_db {
+  ID    BigInt  @id @unique(map: "ID_UNIQUE")
+  Value BigInt? @default(0)
+}
+
+model advancedachievements_playerdata {
+  SteamID            BigInt  @id @unique(map: "SteamID_UNIQUE")
+  PlayerName         String? @db.VarChar(50)
+  SteamName          String? @db.VarChar(60)
+  TribeName          String? @db.VarChar(70)
+  TribeID            Int?    @default(0)
+  PlayTime           BigInt? @default(0)
+  PlayerKills        BigInt? @default(0)
+  DinoKills          BigInt? @default(0)
+  WildDinoKills      BigInt? @default(0)
+  DinosTamed         BigInt? @default(0)
+  DeathByPlayer      BigInt? @default(0)
+  DeathByDino        BigInt? @default(0)
+  DeathByWildDino    BigInt? @default(0)
+  achievements       Bytes?  @db.Blob
+  OncePerCharCommand Bytes?  @db.Blob
+}
+
+model advancedachievements_playerdata_custom {
+  steam_id BigInt
+  keyword  String @db.VarChar(50)
+  value    BigInt
+
+  @@id([steam_id, keyword])
+  @@unique([steam_id, keyword], map: "Unique")
+}
+
+model advancedachievements_tribedata {
+  TribeID     Int     @id @unique(map: "SteamID_UNIQUE") @default(0)
+  TribeName   String? @db.VarChar(80)
+  DamageScore BigInt? @default(0)
 }
