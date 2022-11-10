@@ -6,8 +6,6 @@ declare global {
   var mongo: any;
 }
 
-
-
 const { MONGODB_URI, MONGODB_DB } = process.env
 
 if (!MONGODB_URI) {

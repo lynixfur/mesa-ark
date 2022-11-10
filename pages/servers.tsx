@@ -15,7 +15,11 @@ const header_style_2 = {
   backgroundPosition: 'center'
 }
 
-const DevInfo = () => (
+interface ServerProps { // <--- your custom page props
+  servers: any
+}
+
+const ServerList = ({servers}: ServerProps) => (
     <div className="">
       <Head>
         <title>MesaARK</title>
@@ -31,6 +35,12 @@ const DevInfo = () => (
         </button>
     
       </section>
+
+      <div className="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+        {servers.map((server: any) => (
+          <p>{server.name} - {server.connection_url.replace("steam://connect/","")}</p>
+        ))}
+      </div>
 
 
       <footer className="bg-mesa-gray body-font w-full">
@@ -53,6 +63,7 @@ export async function getServerSideProps() {
 
 
  var servers = await servers_res.json();
+ console.log(servers);
 
   return {
     props: {
@@ -61,4 +72,4 @@ export async function getServerSideProps() {
   };
 }
 
-export default DevInfo
+export default ServerList
