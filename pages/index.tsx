@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '../components/navbar'
+import Footer from '../components/sections/footer'
 
 const header_style = {
   backgroundImage: `url('https://cdn.discordapp.com/attachments/885607142051184700/1038809209967489074/image.png')`,
@@ -18,7 +19,7 @@ const header_style_2 = {
 const Home = () => (
     <div className="">
       <Head>
-        <title>MesaARK</title>
+        <title>MESArk</title>
       </Head>
       <div className="flex flex-col h-screen">
       <Navbar links={null}/>
@@ -81,6 +82,14 @@ The cluster wants to provide the experience closest to the official server.</p>
         </div>
       </section>
 
+      <section className="bg-white">
+        <h2 className="font-extrabold uppercase p-5 pl-0 text-mesa-gray text-center text-4xl">SEASON 1 TRAILER</h2>
+        <p className="font-bold text-black text-center pb-5">Explore season 1 by watching this short trailer.</p>
+        <div className="flex justify-center">
+          <iframe className="w-full h-[900px]" src="https://www.youtube.com/embed/H8idUykpeE4" title="MESA Season 1 Trailer" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        </div>
+      </section>
+
       <section className="bg-mesa-gray text-white">
        <div className="px-10 sm:px-40 py-20 bg-mesa-gray">
           <div className="">
@@ -126,7 +135,7 @@ The cluster wants to provide the experience closest to the official server.</p>
         </div>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-white hidden">
   <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
   <h2 className="font-extrabold uppercase p-5 pl-0 text-mesa-gray text-4xl">Frequently Asked Questions</h2>
       <div className="grid pt-8 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2">
@@ -170,13 +179,7 @@ Note:<br />
   </div>
 </section>
 
-      <footer className="bg-mesa-gray body-font bg-bgray-secondary">
-   <div className="bg-bgray-overlay">
-      <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-         <p className="text-white text-sm uppercase font-bold text-center sm:text-left">Copyright © 2022 Mesa ARK. All Rights Reserved. <span>Designed by Lynix</span></p>
-      </div>
-   </div>
-</footer>
+      <Footer/>
 
     </div>
 )

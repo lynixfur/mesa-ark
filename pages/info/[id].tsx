@@ -3,6 +3,7 @@ import Image from "next/image";
 import Navbar from "../../components/navbar";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
+import Footer from '../../components/sections/footer'
 
 type Params = {
   params: any;
@@ -32,7 +33,7 @@ function ServerList({ wiki_data, page_list }: InfoProps) {
   return (
     <>
       <Head>
-        <title>MesaARK - {wiki_data?.title}</title>
+        <title>MESArk - {wiki_data?.title}</title>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -120,6 +121,7 @@ function ServerList({ wiki_data, page_list }: InfoProps) {
           </ReactMarkdown>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

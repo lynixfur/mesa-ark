@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '../components/navbar'
 import ServerCard from '../components/cards/ServerCard'
+import Footer from '../components/sections/footer'
 
 const header_style = {
   backgroundImage: `url('https://cdn.discordapp.com/attachments/936650179812147201/1038805384846127224/Imian_Poster_Design_No_logo_1.png')`,
@@ -23,7 +24,7 @@ interface ServerProps { // <--- your custom page props
 const ServerList = ({servers}: ServerProps) => (
     <div className="">
       <Head>
-        <title>MesaARK</title>
+        <title>MESArk</title>
       </Head>
       <Navbar links={null}/>
       
@@ -41,13 +42,7 @@ const ServerList = ({servers}: ServerProps) => (
       </section>
 
 
-      <footer className="bg-mesa-gray body-font w-full">
-   <div className="bg-bgray-overlay">
-      <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-         <p className="text-white text-sm uppercase font-bold text-center sm:text-left">Copyright © 2022 Mesa ARK. All Rights Reserved. <span>Designed by Lynix</span></p>
-      </div>
-   </div>
-</footer>
+      <Footer/>
 
     </div>
 )

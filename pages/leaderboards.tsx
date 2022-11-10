@@ -6,6 +6,7 @@ import { useState } from "react";
 import Navbar from "../components/navbar";
 import useSWR from "swr";
 import axios from "axios";
+import Footer from '../components/sections/footer'
 
 const header_style = {
   backgroundImage: `url('https://cdn.discordapp.com/attachments/936650179812147201/1038805384846127224/Imian_Poster_Design_No_logo_1.png')`,
@@ -55,21 +56,121 @@ const Leaderboards = () => {
   await axios.get(url).then((res) => res.data);
   const { data: tribe_data, error: tribe_error } = useSWR(address_tribe, fetcher_tribe);
 
-  if (error) {
+  /*if (error) {
     return <p className="p-5">Loading failed!</p>;
   }
   if (!data) {
     return <p className="p-5">Loading...</p>;
-  }
+  }*/
 
   return (
     <div className="">
       <Head>
-        <title>MesaARK</title>
+        <title>MESArk</title>
       </Head>
       <Navbar links={null} />
 
       <section className="p-10">
+      <h2 className="font-extrabold uppercase text-mesa-gray text-4xl mb-5">
+          TRIBE DAMAGE
+        </h2>
+        {/* Table */}
+        <div className="pb-12">
+          {data ? (
+            <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4">
+              <div>
+                <div className="mb-10">
+                  <div className="overflow-x-auto">
+                    <table
+                      className="w-full whitespace-nowrap"
+                      v-if="$page.props.stats != null"
+                    >
+                      <tbody>
+                        <tr className="focus:outline-none h-12 border-t border-b-[1px] border-gray-200 bg-mesa-orange">
+                          {page == 0 ? (
+                            <td className="pl-5">
+                              <div className="flex items-center">
+                                <p className="text-base leading-none text-white font-bold uppercase">
+                                  Rank
+                                </p>
+                              </div>
+                            </td>
+                          ) : (
+                            <></>
+                          )}
+                          <td className="pl-5">
+                            <div className="flex items-center">
+                              <p className="text-base leading-none text-white font-bold uppercase">
+                                Tribe Name
+                              </p>
+                            </div>
+                          </td>
+                          <td className="pl-5">
+                            <div className="flex items-center">
+                              <p className="text-base leading-none text-white font-bold uppercase">
+                                Tribe Damage
+                              </p>
+                            </div>
+                          </td>
+                        </tr>
+                        {tribe_data?.ranking_data?.map((tribe: any, rank: any) => {
+                          return (
+                            <tr className="focus:outline-none h-12 border-t border-b-[1px] border-gray-200 bg-mesa-gray">
+                              {page == 0 ? (
+                                <td className="pl-5">
+                                  <div className="flex items-center">
+                                    <p className="text-base leading-none text-white font-bold">
+                                      {rank + 1}
+                                    </p>
+                                  </div>
+                                </td>
+                              ) : (
+                                <></>
+                              )}
+                              <td className="pl-5">
+                                <div className="flex items-center">
+                                  <p className="text-base leading-none text-white font-bold">
+                                    {tribe?.TribeName}
+                                  </p>
+                                </div>
+                              </td>
+                              <td className="pl-5">
+                                <div className="flex items-center">
+                                  <p className="text-base leading-none text-white font-bold">
+                                    {tribe?.DamageScore}
+                                  </p>
+                                </div>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="text-gray-700 px-4 py-3 mt-10" role="alert">
+              <div className="">
+                <div className="my-auto flex justify-center mb-5">
+                  <i className="fa-solid fa-clock-rotate-left text-5xl text-bred-2" />
+                </div>
+                <div>
+                  <p className="font-bold text-2xl text-center text-mesa-orange uppercase">
+                    No data available!
+                  </p>
+                  <p className="text-lg text-black uppercase font-bold mt-2 text-center">
+                    We need to wait for the rankings to be recorded.
+                    <br />
+                    Please check back later.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
         <h2 className="font-extrabold uppercase text-mesa-gray text-4xl mb-5">
           LEADERBOARDS
         </h2>
@@ -232,109 +333,10 @@ const Leaderboards = () => {
                   <i className="fa-solid fa-clock-rotate-left text-5xl text-bred-2" />
                 </div>
                 <div>
-                  <p className="font-bold text-2xl text-center dark:text-gray-100">
+                  <p className="font-bold text-2xl text-center text-mesa-orange uppercase">
                     No data available!
                   </p>
-                  <p className="text-lg text-gray-400 mt-2 text-center">
-                    We need to wait for the rankings to be recorded.
-                    <br />
-                    Please check back later.
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-        <h2 className="font-extrabold uppercase text-mesa-gray text-4xl mb-5">
-          TRIBE DAMAGE
-        </h2>
-        {/* Table */}
-        <div className="pb-12">
-          {data ? (
-            <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4">
-              <div>
-                <div className="mb-10">
-                  <div className="overflow-x-auto">
-                    <table
-                      className="w-full whitespace-nowrap"
-                      v-if="$page.props.stats != null"
-                    >
-                      <tbody>
-                        <tr className="focus:outline-none h-12 border-t border-b-[1px] border-gray-200 bg-mesa-orange">
-                          {page == 0 ? (
-                            <td className="pl-5">
-                              <div className="flex items-center">
-                                <p className="text-base leading-none text-white font-bold uppercase">
-                                  Rank
-                                </p>
-                              </div>
-                            </td>
-                          ) : (
-                            <></>
-                          )}
-                          <td className="pl-5">
-                            <div className="flex items-center">
-                              <p className="text-base leading-none text-white font-bold uppercase">
-                                Tribe Name
-                              </p>
-                            </div>
-                          </td>
-                          <td className="pl-5">
-                            <div className="flex items-center">
-                              <p className="text-base leading-none text-white font-bold uppercase">
-                                Tribe Damage
-                              </p>
-                            </div>
-                          </td>
-                        </tr>
-                        {tribe_data?.ranking_data?.map((tribe: any, rank: any) => {
-                          return (
-                            <tr className="focus:outline-none h-12 border-t border-b-[1px] border-gray-200 bg-mesa-gray">
-                              {page == 0 ? (
-                                <td className="pl-5">
-                                  <div className="flex items-center">
-                                    <p className="text-base leading-none text-white font-bold">
-                                      {rank + 1}
-                                    </p>
-                                  </div>
-                                </td>
-                              ) : (
-                                <></>
-                              )}
-                              <td className="pl-5">
-                                <div className="flex items-center">
-                                  <p className="text-base leading-none text-white font-bold">
-                                    {tribe?.TribeName}
-                                  </p>
-                                </div>
-                              </td>
-                              <td className="pl-5">
-                                <div className="flex items-center">
-                                  <p className="text-base leading-none text-white font-bold">
-                                    {tribe?.DamageScore}
-                                  </p>
-                                </div>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="text-gray-700 px-4 py-3 mt-10" role="alert">
-              <div className="">
-                <div className="my-auto flex justify-center mb-5">
-                  <i className="fa-solid fa-clock-rotate-left text-5xl text-bred-2" />
-                </div>
-                <div>
-                  <p className="font-bold text-2xl text-center dark:text-gray-100">
-                    No data available!
-                  </p>
-                  <p className="text-lg text-gray-400 mt-2 text-center">
+                  <p className="text-lg text-black uppercase font-bold mt-2 text-center">
                     We need to wait for the rankings to be recorded.
                     <br />
                     Please check back later.
@@ -347,16 +349,7 @@ const Leaderboards = () => {
 
       </section>
 
-      <footer className="bg-mesa-gray body-font w-full">
-        <div className="bg-bgray-overlay">
-          <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-            <p className="text-white text-sm uppercase font-bold text-center sm:text-left">
-              Copyright © 2022 Mesa ARK. All Rights Reserved.{" "}
-              <span>Designed by Lynix</span>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 };
