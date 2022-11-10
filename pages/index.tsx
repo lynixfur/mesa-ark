@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Navbar from '../components/navbar'
 
 const header_style = {
-  backgroundImage: `url('https://cdn.discordapp.com/attachments/936650179812147201/1038805384846127224/Imian_Poster_Design_No_logo_1.png')`,
+  backgroundImage: `url('https://cdn.discordapp.com/attachments/885607142051184700/1038809209967489074/image.png')`,
   backgroundSize: 'cover',
   backgroundPosition: 'center'
 }
@@ -20,11 +20,12 @@ const Home = () => (
       <Head>
         <title>MesaARK</title>
       </Head>
+      <div className="flex flex-col h-screen">
       <Navbar links={null}/>
       
 
-      <div className="header p-10">
-        <div className="inner-header h-[500px]" style={header_style}>
+      <div className="header h-full">
+        <div className="inner-header h-full" style={header_style}>
       <div className="w-full h-full bg-mesa-gray bg-opacity-60">
    <div className="flex h-full px-3 py-4 sm:p-10 md:p-0">
       <div className="my-auto flex justify-center w-full">
@@ -49,6 +50,7 @@ The cluster wants to provide the experience closest to the official server.</p>
 </div>
         </div> 
       </div> 
+      </div>
 
       <section className="py-10">
         <h2 className="font-extrabold uppercase text-mesa-gray text-4xl pb-5 text-center">We have <span className="text-mesa-orange">CROSS-PLATFORM</span> Clusters!</h2>
@@ -65,10 +67,6 @@ The cluster wants to provide the experience closest to the official server.</p>
               Competitive Settings<br/>
 
               </p>
-              
-              <button className="mb-2 md:mb-0 bg-mesa-orange px-4 py-2 tracking-wider text-white uppercase inline-flex items-center space-x-2 font-bold w-full">
-                     <div className="flex text-center"><span className="ml-1">Offline</span><i className="fa-solid fa-circle text-green-500 animate-pulse my-auto ml-2" /></div>
-              </button>
             </div>
             <div className="bg-mesa-gray shadow-lg shadow-mesa-blue/70 p-5">
             <h2 className="text-xl text-mesa-blue font-extrabold text-center">XBOX CLUSTER</h2>
@@ -78,10 +76,6 @@ The cluster wants to provide the experience closest to the official server.</p>
                 <br /><br />
                 <br />
               </p>
-
-              <button className="mb-2 md:mb-0 bg-mesa-orange px-4 py-2 tracking-wider text-white uppercase inline-flex items-center space-x-2 font-bold w-full">
-                     <div className="flex"><span className="ml-1">Offline</span><i className="fa-solid fa-circle text-green-500 animate-pulse my-auto ml-2" /></div>
-              </button>
             </div>
           </div>
         </div>

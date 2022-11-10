@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '../components/navbar'
+import ServerCard from '../components/cards/ServerCard'
 
 const header_style = {
   backgroundImage: `url('https://cdn.discordapp.com/attachments/936650179812147201/1038805384846127224/Imian_Poster_Design_No_logo_1.png')`,
@@ -26,19 +27,16 @@ const ServerList = ({servers}: ServerProps) => (
       </Head>
       <Navbar links={null}/>
       
-      <section className="h-[900px] p-10">
+      <section className="min-h-[900px] p-10">
 
-      <h2 className="font-extrabold uppercase text-mesa-gray text-4xl mb-5">SERVER LIST TEST</h2>
+      <h2 className="font-extrabold uppercase text-mesa-gray text-4xl mb-5">SERVERS</h2>
 
-        <div className="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mb-5">
+        <div className="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 mb-5">
+          {servers.lenght == 0 && <h1 className="text-black">There's currently no servers online!</h1>}
           {servers.map((server: any) => (
-            <p>{server.name} - {server.connection_url.replace("steam://connect/","")}</p>
+            <ServerCard server={server}/>
           ))}
         </div>
-
-        <button className="mb-2 md:mb-0 bg-mesa-orange shadow-xl shadow-mesa-orange/50 px-4 py-2 tracking-wider text-white uppercase inline-flex items-center space-x-2 font-bold">
-            <div className="flex"><span className="ml-1">Reload</span><i className="fa-solid fa-circle text-green-500 animate-pulse my-auto ml-2" /></div>
-        </button>
     
       </section>
 
