@@ -185,7 +185,24 @@ const Leaderboards = () => {
         {/* Table */}
         <div className="pb-12">
           {data ? (
-            <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4">
+            <>
+            <div className="text-gray-700 px-4 py-3 mt-10" role="alert">
+              <div className="">
+                <div className="my-auto flex justify-center mb-5">
+                  <i className="fa-solid fa-triangle-exclamation text-5xl text-mesa-orange" />
+                </div>
+                <div>
+                  <p className="font-bold text-2xl text-center text-mesa-orange uppercase">
+                    Player Rankings Disabled
+                  </p>
+                  <p className="text-lg text-black uppercase font-bold mt-2 text-center">
+                    We are noticing an issue with our new KD system.<br />
+                    Some players have Infinity KD, Impressive!
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4 hidden">
               <div>
                 <div className="mb-10">
                   <div className="overflow-x-auto">
@@ -333,6 +350,7 @@ const Leaderboards = () => {
                 </div>
               </div>
             </div>
+            </>
           ) : (
             <div className="text-gray-700 px-4 py-3 mt-10" role="alert">
               <div className="">

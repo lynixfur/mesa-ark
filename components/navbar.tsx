@@ -38,6 +38,12 @@ const handleMobile = () => setMobileMenu(!mobileMenu);
         <Link href="/leaderboards" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Leaderboards</Link>
       </li>
       <li>
+        <a href="https://www.youtube.com/c/IMIAN3" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors"><i className="fa-brands fa-youtube"></i></a>
+      </li>
+      <li>
+        <a href="https://discord.gg/mesasteam" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors"><i className="fa-brands fa-discord"></i></a>
+      </li>
+      <li>
         <a href="https://shop.mesa-ark.com" className="block py-2 pr-4 pl-3 text-white bg-mesa-orange p-4 uppercase font-bold transition-colors">SHOP</a>
       </li>
       </ul>

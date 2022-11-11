@@ -122,7 +122,7 @@ The cluster wants to provide the experience closest to the official server.</p>
         </p>
         <div className="flex justify-center">
           <a href="https://shop.mesa-ark.com" className="mt-5 mb-2 md:mb-0 bg-mesa-blue shadow-xl shadow-mesa-blue/50 px-4 py-2 tracking-wider text-white uppercase inline-flex items-center space-x-2 font-bold">
-            <div className="flex"><span className="ml-1">VISIT THE SHOP</span><i className="fa-solid fa-circle text-green-500 animate-pulse my-auto ml-2" /></div>
+            <div className="flex"><span className="">VISIT THE SHOP</span></div>
           </a>
         </div>
         </div>
@@ -179,7 +179,7 @@ Note:<br />
           <div>
           <h2 className="font-extrabold uppercase p-5 text-mesa-blue text-4xl text-center">Join Our Community</h2>
           <div className="flex justify-center w-full mt-5">
-            <a href="https://discord.gg/bloody" className="h-[70px] w-72 relative">
+            <a href="https://discord.gg/mesasteam" className="h-[70px] w-72 relative">
               <img className="object-cover shadow-xl" src="https://discordapp.com/api/guilds/889440747529568316/widget.png?style=banner2&w=1080&q=75"/>
             </a>
           </div>
