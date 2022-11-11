@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
+import Link from 'next/link'
 
 type Props = {
     links: any 
@@ -25,16 +26,16 @@ const handleMobile = () => setMobileMenu(!mobileMenu);
     <div className={mobileMenu ? "w-full md:block md:w-auto" : "hidden w-full md:block md:w-auto"} id="navbar-default">
       <ul className="flex justify-center items-center flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-mesa-gray bg-mesa-gray">
       <li>
-        <a href="/" className="block py-2 pr-4 pl-3 text-white rounded text-white hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Home</a>
+        <Link href="/" className="block py-2 pr-4 pl-3 text-white rounded text-white hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Home</Link>
       </li>
       <li>
-        <a href="/info/pvp-system" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Information</a>
+        <Link href="/info/rules" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Information</Link>
       </li>
       <li>
-        <a href="/servers" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Servers</a>
+        <Link href="/servers" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Servers</Link>
       </li>
       <li>
-        <a href="/leaderboards" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Leaderboards</a>
+        <Link href="/leaderboards" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Leaderboards</Link>
       </li>
       <li>
         <a href="https://shop.mesa-ark.com" className="block py-2 pr-4 pl-3 text-white bg-mesa-orange p-4 uppercase font-bold transition-colors">SHOP</a>

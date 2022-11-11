@@ -67,6 +67,13 @@ const Leaderboards = () => {
     <div className="">
       <Head>
         <title>MESArk</title>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
       </Head>
       <Navbar links={null} />
 
@@ -115,7 +122,7 @@ const Leaderboards = () => {
                         </tr>
                         {tribe_data?.ranking_data?.map((tribe: any, rank: any) => {
                           return (
-                            <tr className="focus:outline-none h-12 border-t border-b-[1px] border-gray-200 bg-mesa-gray">
+                            <tr key={tribe?.TribeName} className="focus:outline-none h-12 border-t border-b-[1px] border-gray-200 bg-mesa-gray">
                               {page == 0 ? (
                                 <td className="pl-5">
                                   <div className="flex items-center">
@@ -154,7 +161,7 @@ const Leaderboards = () => {
             <div className="text-gray-700 px-4 py-3 mt-10" role="alert">
               <div className="">
                 <div className="my-auto flex justify-center mb-5">
-                  <i className="fa-solid fa-clock-rotate-left text-5xl text-bred-2" />
+                  <i className="fa-solid fa-clock-rotate-left text-5xl text-mesa-orange" />
                 </div>
                 <div>
                   <p className="font-bold text-2xl text-center text-mesa-orange uppercase">
@@ -251,7 +258,7 @@ const Leaderboards = () => {
                         </tr>
                         {ranking_players?.map((player: any, rank: any) => {
                           return (
-                            <tr className="focus:outline-none h-12 border-t border-b-[1px] border-gray-200 bg-mesa-gray">
+                            <tr key={player?.PlayerName} className="focus:outline-none h-12 border-t border-b-[1px] border-gray-200 bg-mesa-gray">
                               {page == 0 ? (
                                 <td className="pl-5">
                                   <div className="flex items-center">
@@ -330,7 +337,7 @@ const Leaderboards = () => {
             <div className="text-gray-700 px-4 py-3 mt-10" role="alert">
               <div className="">
                 <div className="my-auto flex justify-center mb-5">
-                  <i className="fa-solid fa-clock-rotate-left text-5xl text-bred-2" />
+                  <i className="fa-solid fa-clock-rotate-left text-5xl text-mesa-orange" />
                 </div>
                 <div>
                   <p className="font-bold text-2xl text-center text-mesa-orange uppercase">

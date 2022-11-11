@@ -11,8 +11,8 @@ type Params = {
 
 export async function getServerSideProps({ params }: Params) {
   const id = params.id;
-  const res = await fetch(`http://bloody-ark.com:3000/api/wiki/${id}`);
-  const list_res = await fetch(`http://bloody-ark.com:3000/api/wiki/page_list`);
+  const res = await fetch(`https://mesa-ark.com/api/info/${id}`);
+  const list_res = await fetch(`http://mesa-ark.com/api/info/page_list`);
   const data = await res.json();
   const list_data = await list_res.json();
 
@@ -60,7 +60,7 @@ function ServerList({ wiki_data, page_list }: InfoProps) {
                 <div>
                   <div className="container flex flex-col items-center py-12 sm:py-24">
                     <div className="w-full mt-5 justify-center items-center flex-col mb-5 sm:mb-10">
-                      <h1 className="text-4xl lg:text-5xl xl:text-6xl text-center text-gray-50 font-black leading-7 md:leading-10">
+                      <h1 className="text-4xl lg:text-5xl xl:text-6xl text-center text-gray-50 font-black leading-7 md:leading-10 uppercase">
                         <span>
                           <i className={wiki_data?.page_icon} /> <br />
                           {wiki_data?.title}
@@ -76,7 +76,7 @@ function ServerList({ wiki_data, page_list }: InfoProps) {
         {/* Content */}
       </div>
 
-      <div className="block md:flex w-full min-w-full">
+      <div className="block md:flex w-full min-w-full mb-10">
         <ul className="flex-col space-y-1 text-white px-5 mt-10 w-full md:w-64 md:border-r-0 border-gray-700">
           <p className="mb-5 text-black text-xl font-bold uppercase">
             Information
@@ -93,7 +93,7 @@ function ServerList({ wiki_data, page_list }: InfoProps) {
                       page_link?.page_icon + " m-1 my-auto text-xl text-white"
                     }
                   />
-                  <span className="ml-2 text-md font-bold">
+                  <span className="ml-2 text-md font-bold uppercase">
                     {page_link?.title}
                   </span>
                 </a>
@@ -107,7 +107,7 @@ function ServerList({ wiki_data, page_list }: InfoProps) {
                       page_link?.page_icon + " m-1 my-auto text-xl text-white"
                     }
                   />
-                  <span className="ml-2 text-md font-bold">
+                  <span className="uppercase ml-2 text-md font-bold">
                     {page_link?.title}
                   </span>
                 </a>

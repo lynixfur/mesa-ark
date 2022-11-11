@@ -1,11 +1,8 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { connectToDatabase } from '../../../libs/mongodb'
+import { NextApiRequest, NextApiResponse } from 'next';
 
-type Data = {
-    page_list: any
-}
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { db } = await connectToDatabase();
 
     const page_list = await db.collection("pages").find({}).project({ str_id: 1, page_icon: 1, title: 1 }).toArray();

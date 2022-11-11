@@ -5,7 +5,7 @@ import Navbar from '../components/navbar'
 import Footer from '../components/sections/footer'
 
 const header_style = {
-  backgroundImage: `url('https://cdn.discordapp.com/attachments/885607142051184700/1038809209967489074/image.png')`,
+  backgroundImage: `url('https://mesa-ark.com/mesabg.png')`,
   backgroundSize: 'cover',
   backgroundPosition: 'center'
 }
@@ -34,7 +34,7 @@ const Home = ({player_count}: any) => (
             <div className="container flex flex-col items-center py-12 sm:py-12">
                <div className="w-11/12 sm:w-2/3 lg:flex justify-center items-center flex-col mb-5 sm:mb-10">
                   <div className="flex justify-center"><img alt="Bloody ARK Logo" className="h-32" src="images/MESA_Icon.png" /></div>
-                  <p className="mt-5 sm:mt-5 lg:w-10/12 text-gray-300 font-semibold text-center text-md sm:text-lg">MesaARK is a server cluster with all maps for Ark Survival Evolved.
+                  <p className="mt-5 sm:mt-5 lg:w-10/12 text-gray-300 font-semibold text-center text-md sm:text-lg">MESArk is a server cluster with all maps for Ark Survival Evolved.
 You can find an amazing community by join our servers and discord channel.
 The cluster wants to provide the experience closest to the official server.</p>
                </div>
@@ -55,7 +55,7 @@ The cluster wants to provide the experience closest to the official server.</p>
 
       <section className="py-10">
         <h2 className="font-extrabold uppercase text-mesa-gray text-4xl pb-5 text-center">We have <span className="text-mesa-orange">CROSS-PLATFORM</span> Clusters!</h2>
-        <p className="text-center font-bold">Whether You enjoy <span className="text-green-600">XBOX</span> or <span className="text-mesa-blue">PC</span> you can play at the comfort of your battle station on Mesa ARK! Visit our Clusters!</p>
+        <p className="text-center font-bold">Whether You enjoy  <span className="text-mesa-blue">PC</span> or <span className="text-green-600">XBOX</span> you can play at the comfort of your battle station on MESArk! Visit our Clusters!</p>
         <div className="sm:px-20 px-5 flex justify-center mt-5">
           <div className="grid sm:grid-cols-2 grid-cols-1 gap-4 sm:w-[50%] w-full">
             <div className="bg-mesa-gray shadow-xl shadow-mesa-orange/70 p-5">
@@ -82,20 +82,20 @@ The cluster wants to provide the experience closest to the official server.</p>
         </div>
       </section>
 
-      <section className="bg-white">
-        <h2 className="font-extrabold uppercase p-5 pl-0 text-mesa-gray text-center text-4xl">SEASON 1 TRAILER</h2>
-        <p className="font-bold text-black text-center pb-5">Explore season 1 by watching this short trailer.</p>
+      <section className="bg-mesa-gray">
+        <h2 className="font-extrabold uppercase p-5 pl-0 text-white text-center text-4xl">SEASON 1 TRAILER</h2>
+        <p className="font-bold text-white text-center pb-5">Explore season 1 by watching this short trailer.</p>
         <div className="flex justify-center">
-          <iframe className="w-full h-[900px]" src="https://www.youtube.com/embed/H8idUykpeE4" title="MESA Season 1 Trailer" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+          <iframe className="w-full h-[422px] w-[750px] mb-10" src="https://www.youtube.com/embed/H8idUykpeE4" title="MESA Season 1 Trailer" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </div>
       </section>
 
-      <section className="bg-mesa-gray text-white">
-       <div className="px-10 sm:px-40 py-20 bg-mesa-gray">
+      <section className="text-black bg-white">
+       <div className="px-10 sm:px-40 py-20">
           <div className="">
           <h2 className="font-extrabold uppercase text-mesa-blue text-4xl pb-5">About Mesa ARK</h2>
           <p>
-            Welcome to Mesa ARK, The perfect Ark: Survival Evolved experience. <br />
+            Welcome to MESArk, The perfect Ark: Survival Evolved experience. <br />
             This server was  established in 2021 and is still running strong as one of the biggest unofficial ark communities. <br />
             The server is fitted with plugins made to improve the quality of life on Ark making things easier and more enjoyable.
           </p>
@@ -103,18 +103,21 @@ The cluster wants to provide the experience closest to the official server.</p>
           <div className="pt-5 text-right">
             <h2 className="font-extrabold uppercase text-mesa-orange text-4xl pb-5">Why play on Mesa ARK?</h2>
             <p>
-            Mesa ARK features an incredibly large, active community that can be seen in our  Discord server or in-game. <br />
-            Our Servers have unique features that can only be found here, such as, Tribe Ranks and more. <br />
-            Mesa ARK has a 24/7 dedicated support team that answers every question you may have and does its best to help you reach the solutions you are looking for.
+            MESArk features an incredibly large, active community that can be seen in our  Discord server or in-game. <br />
+            Our Servers have unique features that can only be found here, such as, Cave Changes and more. <br />
+            MESArk has a 24/7 dedicated support team that answers every question you may have and does its best to help you reach the solutions you are looking for.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-10">
-        <h2 className="font-extrabold uppercase p-5 text-mesa-gray text-4xl text-center">Get More ArkPoints and Support the Community</h2>
-        <p className="text-center font-bold">
-          Discover our Vip Plan Membership and get more points and stuff in-game! <br />
+      <section className="h-[500px]" style={header_style_2}>
+      <div className="w-full h-full bg-mesa-gray bg-opacity-80">
+        <div className="w-full h-full flex justify-center items-center">
+          <div>
+        <h2 className="font-extrabold uppercase p-5 text-mesa-orange text-4xl text-center">Get your MVP Rank right now and Support the Community</h2>
+        <p className="text-center font-bold text-white">
+          Discover our MVP Membership and get few benefits and stuff in-game! <br />
           Every donation or buy on the shop is devolved to grow the community! <br />
         </p>
         <div className="flex justify-center">
@@ -122,20 +125,12 @@ The cluster wants to provide the experience closest to the official server.</p>
             <div className="flex"><span className="ml-1">VISIT THE SHOP</span><i className="fa-solid fa-circle text-green-500 animate-pulse my-auto ml-2" /></div>
           </a>
         </div>
-      </section>
-
-      <section className="bg-mesa-gray h-64"  style={header_style_2}>
-        <div className="w-full h-full bg-mesa-gray bg-opacity-80 p-10">
-          <h2 className="font-extrabold uppercase p-5 text-white text-4xl text-center">Join Our Community</h2>
-          <div className="flex justify-center w-full mt-5">
-            <a href="https://discord.gg/bloody" className="h-[70px] w-72 relative">
-              <img className="object-cover shadow-xl" src="https://discordapp.com/api/guilds/889440747529568316/widget.png?style=banner2&w=1080&q=75"/>
-            </a>
-          </div>
+        </div>
+        </div>
         </div>
       </section>
 
-      <section className="bg-white hidden">
+       <section className="bg-white hidden">
   <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
   <h2 className="font-extrabold uppercase p-5 pl-0 text-mesa-gray text-4xl">Frequently Asked Questions</h2>
       <div className="grid pt-8 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2">
@@ -178,6 +173,21 @@ Note:<br />
       </div>
   </div>
 </section>
+
+      <section className="sm:p-10 p-5">
+        <div className="w-full h-full flex justify-center items-center">
+          <div>
+          <h2 className="font-extrabold uppercase p-5 text-mesa-blue text-4xl text-center">Join Our Community</h2>
+          <div className="flex justify-center w-full mt-5">
+            <a href="https://discord.gg/bloody" className="h-[70px] w-72 relative">
+              <img className="object-cover shadow-xl" src="https://discordapp.com/api/guilds/889440747529568316/widget.png?style=banner2&w=1080&q=75"/>
+            </a>
+          </div>
+        </div>
+        </div>
+      </section>
+
+     
 
       <Footer/>
 

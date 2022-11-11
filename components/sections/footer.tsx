@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 const Footer = () => (
 <footer className="bg-mesa-gray body-font bg-bgray-secondary">
       <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
@@ -17,33 +19,33 @@ const Footer = () => (
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a
+                <Link
                   className="block py-2 pr-4 pl-3 text-white rounded text-white hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors"
-                  href="https://shop.bloody-ark.com/terms/privacy"
+                  href="/"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   className="block py-2 pr-4 pl-3 text-white rounded text-white hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors"
-                  href="https://shop.bloody-ark.com/terms/checkout"
+                  href="/info/rules"
                 >
                   Information
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="block py-2 pr-4 pl-3 text-white rounded text-white hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors" href="/info/vote">
+                <Link className="block py-2 pr-4 pl-3 text-white rounded text-white hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors" href="/servers">
                   Servers
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   className="block py-2 pr-4 pl-3 text-white rounded text-white hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors"
-                  href="https://shop.bloody-ark.com/category/1266875"
+                  href="/leaderboards"
                 >
                   Leaderboards
-                </a>
+                </Link>
               </li>
             </nav>
           </div>
@@ -76,6 +78,7 @@ const Footer = () => (
                 PARTNERED WITH
               </h2>
               <nav className="list-none mb-10 flex justify-center sm:justify-left sm:block">
+                <h1 className="text-white text-2xl font-bold mb-2">BLOODY ARK</h1>
                 <img
                   alt="Bloody ARK Logo"
                   className="w-32"
