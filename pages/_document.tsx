@@ -13,7 +13,7 @@ export default function Document() {
         />
       </Head>
       <body>
-        <div className="bg-mesa-orange border-l-4 border-mesa-gray text-white p-4 fixed bottom-0 md:bottom-10 right-0 md:right-10 z-50" role="alert">
+        <div className="hidden bg-mesa-orange border-l-4 border-mesa-gray text-white p-4 fixed bottom-0 md:bottom-10 right-0 md:right-10 z-50" role="alert">
           <p className="font-bold uppercase">Website Issues under Investigation</p>
           <p className="uppercase">We are currently investigating an issue with Leaderboards!</p>
         </div>

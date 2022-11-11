@@ -42,7 +42,11 @@ const Leaderboards = () => {
 
   data?.ranking_data.forEach((player: any) => {
     // Add KD Value
-    player.kd = (player?.PlayerKills / player?.DeathByPlayer).toFixed(2);
+    if(parseInt(player?.DeathByPlayer) === 0) {
+      player.kd = parseInt(player?.PlayerKills).toFixed(1); // This line prevents Infinity KD Issue
+    } else {
+      player.kd = (player?.PlayerKills / player?.DeathByPlayer).toFixed(1);
+    }
     // Add to New List
     ranking_players.push(player);
   })
@@ -186,7 +190,7 @@ const Leaderboards = () => {
         <div className="pb-12">
           {data ? (
             <>
-            <div className="text-gray-700 px-4 py-3 mt-10" role="alert">
+            <div className="text-gray-700 px-4 py-3 mt-10 hidden" role="alert">
               <div className="">
                 <div className="my-auto flex justify-center mb-5">
                   <i className="fa-solid fa-triangle-exclamation text-5xl text-mesa-orange" />
@@ -202,7 +206,7 @@ const Leaderboards = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4 hidden">
+            <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4">
               <div>
                 <div className="mb-10">
                   <div className="overflow-x-auto">
