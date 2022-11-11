@@ -2,6 +2,7 @@
   "name": "mesa-ark",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --port 8003",
     "build": "next build",
@@ -19,6 +20,7 @@
     "eslint-config-next": "13.0.2",
     "mongodb": "^4.11.0",
     "next": "13.0.2",
+    "node-fetch": "^3.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.3",
