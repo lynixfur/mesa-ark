@@ -29,9 +29,6 @@ const handleMobile = () => setMobileMenu(!mobileMenu);
         <Link href="/" className="block py-2 pr-4 pl-3 text-white rounded text-white hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Home</Link>
       </li>
       <li>
-        <Link href="/info/rules" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Information</Link>
-      </li>
-      <li>
         <Link href="/servers" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Servers</Link>
       </li>
       <li>
