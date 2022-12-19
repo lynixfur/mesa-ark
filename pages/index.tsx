@@ -54,11 +54,11 @@ The cluster wants to provide the experience closest to the official server.</p>
       </div>
 
       <section className="py-10 bg-mesa-black">
-        <h2 className="font-extrabold uppercase text-mesa-gray text-4xl pb-5 text-center">We have <span className="text-mesa-orange">CROSS-PLATFORM</span> Clusters!</h2>
-        <p className="text-center font-bold">Whether You enjoy  <span className="text-mesa-blue">PC</span> or <span className="text-green-600">XBOX</span> you can play at the comfort of your battle station on MESArk! Visit our Clusters!</p>
+        <h2 className="font-extrabold uppercase text-white text-4xl pb-5 text-center">We have <span className="text-mesa-orange">CROSS-PLATFORM</span> Clusters!</h2>
+        <p className="text-center text-white font-bold">Whether You enjoy  <span className="text-mesa-blue">PC</span> or <span className="text-green-600">XBOX</span> you can play at the comfort of your battle station on MESArk! Visit our Clusters!</p>
         <div className="sm:px-20 px-5 flex justify-center mt-5">
           <div className="grid sm:grid-cols-2 grid-cols-1 gap-4 sm:w-[50%] w-full">
-            <div className="bg-mesa-gray shadow-xl shadow-mesa-orange/70 p-5">
+            <div className="bg-mesa-gray shadow-md shadow-mesa-orange/70 p-5">
               <h2 className="text-xl text-mesa-orange font-extrabold text-center">PC CLUSTER</h2>
               <p className="text-md text-white text-center font-bold my-10">
               4 Man <br />
@@ -69,7 +69,7 @@ The cluster wants to provide the experience closest to the official server.</p>
 
               </p>
             </div>
-            <div className="bg-mesa-gray shadow-lg shadow-mesa-blue/70 p-5">
+            <div className="bg-mesa-gray shadow-md shadow-mesa-blue/70 p-5">
             <h2 className="text-xl text-mesa-blue font-extrabold text-center">XBOX CLUSTER</h2>
 
               <p className="text-md text-white text-center font-bold my-10">
@@ -90,9 +90,9 @@ The cluster wants to provide the experience closest to the official server.</p>
         </div>
       </section>
 
-      <section className="text-black bg-white">
+      <section className="text-black bg-mesa-black">
        <div className="px-10 sm:px-40 py-20">
-          <div className="">
+          <div className="text-white">
           <h2 className="font-extrabold uppercase text-mesa-blue text-4xl pb-5">About Mesa ARK</h2>
           <p>
             Welcome to MESArk, The perfect Ark: Survival Evolved experience. <br />
@@ -100,7 +100,7 @@ The cluster wants to provide the experience closest to the official server.</p>
             The server is fitted with plugins made to improve the quality of life on Ark making things easier and more enjoyable.
           </p>
           </div>
-          <div className="pt-5 text-right">
+          <div className="pt-5 text-right text-white">
             <h2 className="font-extrabold uppercase text-mesa-orange text-4xl pb-5">Why play on Mesa ARK?</h2>
             <p>
             MESArk features an incredibly large, active community that can be seen in our  Discord server or in-game. <br />
@@ -130,7 +130,7 @@ The cluster wants to provide the experience closest to the official server.</p>
         </div>
       </section>
 
-       <section className="bg-white hidden">
+       <section className="bg-mesa-black hidden">
   <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
   <h2 className="font-extrabold uppercase p-5 pl-0 text-mesa-gray text-4xl">Frequently Asked Questions</h2>
       <div className="grid pt-8 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2">
@@ -174,7 +174,7 @@ Note:<br />
   </div>
 </section>
 
-      <section className="sm:p-10 p-5">
+      <section className="sm:p-10 p-5 bg-mesa-black">
         <div className="w-full h-full flex justify-center items-center">
           <div>
           <h2 className="font-extrabold uppercase p-5 text-mesa-blue text-4xl text-center">Join Our Community</h2>

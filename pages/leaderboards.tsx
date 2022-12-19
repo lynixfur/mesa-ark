@@ -81,7 +81,7 @@ const Leaderboards = () => {
       </Head>
       <Navbar links={null} />
 
-      <section className="p-10">
+      <section className="p-10 bg-mesa-black">
       <h2 className="font-extrabold uppercase text-mesa-gray text-4xl mb-5">
           TRIBE DAMAGE
         </h2>
