@@ -53,7 +53,7 @@ The cluster wants to provide the experience closest to the official server.</p>
       </div> 
       </div>
 
-      <section className="py-10">
+      <section className="py-10 bg-mesa-black">
         <h2 className="font-extrabold uppercase text-mesa-gray text-4xl pb-5 text-center">We have <span className="text-mesa-orange">CROSS-PLATFORM</span> Clusters!</h2>
         <p className="text-center font-bold">Whether You enjoy  <span className="text-mesa-blue">PC</span> or <span className="text-green-600">XBOX</span> you can play at the comfort of your battle station on MESArk! Visit our Clusters!</p>
         <div className="sm:px-20 px-5 flex justify-center mt-5">
