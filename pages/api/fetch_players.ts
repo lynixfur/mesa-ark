@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
         await db.collection("servers").updateOne({ _id: server._id },
         {
-            $set: { is_online: data.is_online, players: parseInt(data.players) }
+            $set: { is_online: data.is_online, players: parseInt(data.players), password: data.password, private: data.private }
         });
 
         console.log(`Players : ${data.players} , Online ${data.is_online}`);

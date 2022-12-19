@@ -11,6 +11,10 @@ const ServerCard = (props: any) => (
           </div>
           <p className="text-center text-white uppercase font-bold">{props.server.connection_url.replace("steam://connect/","")}</p>
           <hr className="my-5"></hr>
+          {props.server.is_online == "1" 
+            ? <p className="text-center text-white uppercase font-bold text-mesa-blue">Online</p>
+            : <p className="text-center text-white uppercase font-bold text-mesa-orange">Offline</p>
+          }
           <p className="text-center text-white uppercase font-semibold">{props.server.players} Players Online</p>
           <div className="flex justify-center p-4 pb-2 w-full" />
             <a href={props.server.connection_url} className="w-full text-white font-bold bg-mesa-orange focus:ring-4 focus:outline-none focus:ring-blue-300 text-sm px-5 py-2.5 text-center mr-3 md:mr-0 uppercase " type="button" aria-label="like">Join</a>
