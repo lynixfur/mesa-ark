@@ -1,3 +1,4 @@
+
 import Link from "next/link"
 
 const Footer = () => (
@@ -24,14 +25,6 @@ const Footer = () => (
                   href="/"
                 >
                   Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="block py-2 pr-4 pl-3 text-white rounded text-white hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors"
-                  href="/info/rules"
-                >
-                  Information
                 </Link>
               </li>
               <li>
@@ -73,7 +66,7 @@ const Footer = () => (
             </nav>
           </div>
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-            <a href="https://bloody-ark.com">
+            <a href="https://bloody.gg">
               <h2 className="title-font font-bold text-mesa-orange tracking-widest text-md mb-3">
                 PARTNERED WITH
               </h2>
@@ -82,7 +75,7 @@ const Footer = () => (
                 <img
                   alt="Bloody ARK Logo"
                   className="w-32"
-                  src="https://bloody-ark.com/images/favicon.png"
+                  src="https://bloody.gg/logo.png"
                 />
               </nav>
             </a>

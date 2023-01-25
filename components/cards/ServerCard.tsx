@@ -1,5 +1,5 @@
 const ServerCard = (props: any) => (
-    <div className="bg-mesa-gray shadow-md shadow-mesa-orange/70 p-4">
+    <div className="bg-mesa-gray shadow-md p-4">
         <div className="flex justify-center">
             <div className=" h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
             <img src={props.server.server_icon} alt={props.server.name} className=" w-full  object-scale-down lg:object-fit  lg:h-48 rounded-2xl" />

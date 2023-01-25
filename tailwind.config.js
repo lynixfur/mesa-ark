@@ -11,7 +11,8 @@ module.exports = {
         "mesa-gray": "#242424",
         "mesa-black": "#141414",
         "mesa-orange":"#fc3d10",
-        "mesa-blue": "#02a1a0"
+        "mesa-blue": "#02a1a0",
+        "mesa-dropdown": "#3e3e3e"
       },
     },
   },

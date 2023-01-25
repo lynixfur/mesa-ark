@@ -71,3 +71,292 @@ model advancedachievements_tribedata {
   TribeName   String? @db.VarChar(80)
   DamageScore BigInt? @default(0)
 }
+
+model arkanticheat_banlist_ip {
+  id         Int    @id @default(autoincrement())
+  ip         String @db.VarChar(15)
+  time_limit BigInt
+}
+
+model arkanticheat_banlist_steamid {
+  steamid    BigInt @id @unique(map: "steamid_UNIQUE")
+  time_limit BigInt
+}
+
+model arkshopplayers {
+  Id         Int    @id @default(autoincrement())
+  SteamId    BigInt @unique(map: "SteamId_UNIQUE") @default(0)
+  Kits       String @default("{}") @db.VarChar(1024)
+  Points     Int?   @default(0)
+  TotalSpent Int?   @default(0)
+}
+
+model discord_integration_crosschat_global {
+  id          BigInt @unique(map: "id") @default(autoincrement())
+  steam_id    BigInt
+  server_name String @db.VarChar(50)
+  server_id   Int
+  tribe_id    Int
+  tribe_name  String @db.VarChar(60)
+  player_name String @db.VarChar(60)
+  message     String @db.Text
+}
+
+model discord_integration_mutes {
+  steamid  BigInt  @id @unique(map: "steamid_UNIQUE")
+  mutetime BigInt? @default(0)
+}
+
+model discord_integration_playerlist_message_ids {
+  server_name String @unique(map: "server_name") @db.VarChar(50)
+  server_id   BigInt
+}
+
+model discord_integration_players {
+  steamid         BigInt  @id @unique(map: "steamid_UNIQUE")
+  DiscordID       BigInt?
+  UserName        String  @db.VarChar(100)
+  RaidWarning     Int?    @default(0) @db.TinyInt
+  TargetingTeamID String  @db.TinyText
+  json            String? @db.Text
+}
+
+model discord_integration_raidwarning_settings {
+  id          Int    @unique(map: "id") @default(autoincrement())
+  raidwarning Int
+  teamid      Int
+  server_name String @db.VarChar(50)
+  steam_id    BigInt
+}
+
+model discord_integration_tribe_crosschat {
+  Owner_Steam_ID BigInt
+  Server_ID      Int     @db.UnsignedInt
+  Tribe_Name     String? @db.VarChar(100)
+  Tribe_ID       Int?
+
+  @@id([Owner_Steam_ID, Server_ID])
+  @@unique([Owner_Steam_ID, Server_ID], map: "Unique")
+}
+
+model hwidbans {
+  Id          Int     @id @default(autoincrement())
+  SteamId     BigInt  @unique(map: "SteamId_UNIQUE") @default(0)
+  HWID        String  @default("0") @db.VarChar(768)
+  IsBanned    Boolean @default(false)
+  BannedUntil BigInt  @default(0)
+}
+
+model hwidbansipdata {
+  Id          Int     @id @default(autoincrement())
+  IsBanned    Boolean @default(false)
+  BannedUntil BigInt  @default(0)
+  IpAddr      String  @unique(map: "IpAddr_UNIQUE") @default("0") @db.VarChar(100)
+  CountryName String  @default("0") @db.VarChar(100)
+  CountryCode String  @default("0") @db.VarChar(100)
+  ASN         BigInt  @default(0)
+  ISP         String  @default("0") @db.VarChar(100)
+  Block       Boolean @default(false)
+  LastChecked BigInt  @default(0)
+}
+
+model hwidbansplayerevents {
+  Id               Int    @id @unique(map: "Id_UNIQUE") @default(autoincrement())
+  ServerName       String @db.Text
+  EventName        String @db.Text
+  PlayerIngameName String @db.Text
+  PlayerSteamName  String @db.Text
+  PlayerId         String @db.Text
+  SteamId          BigInt @default(0)
+  HWID             String @default("0") @db.VarChar(768)
+  IpAddr           String @default("0") @db.VarChar(100)
+  CountryName      String @default("0") @db.VarChar(100)
+  TribeName        String @db.Text
+  TribeId          BigInt @default(0)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model hwidbanssocketencryption {
+  PrivateKey String @default("") @db.VarChar(768)
+  IVS        String @default("") @db.VarChar(768)
+
+  @@ignore
+}
+
+model hwidbanssocketservers {
+  ServerIpAddr     String @default("0") @db.VarChar(100)
+  ServerSocketPort BigInt @default(0)
+
+  @@id([ServerIpAddr, ServerSocketPort])
+}
+
+model hwidbanswhitelist {
+  Id               Int     @id @default(autoincrement())
+  SteamId          BigInt  @unique(map: "SteamId_UNIQUE") @default(0)
+  IsAltWhitelisted Boolean @default(false)
+  IsIpWhitelisted  Boolean @default(false)
+}
+
+model itemspluslog {
+  id         BigInt   @id @default(autoincrement())
+  serverid   BigInt?
+  servername String?  @db.VarChar(50)
+  slotid     BigInt?
+  steamid    BigInt   @default(0) @db.UnsignedBigInt
+  qty        Int?
+  bp         String?  @db.VarChar(50)
+  upload     Boolean? @db.Bit(1)
+  download   Int?     @db.TinyInt
+  failed     Boolean? @db.Bit(1)
+  timestamp  DateTime @default(now()) @db.DateTime(0)
+}
+
+model itemsplusoverrides {
+  blueprint String @unique(map: "blueprint") @db.VarChar(250)
+}
+
+model itemsplussettings {
+  serverid      BigInt @id
+  worldsavetime BigInt
+
+  @@index([worldsavetime, serverid], map: "worldsavetime")
+}
+
+model itemsplusuploadsv2 {
+  id         BigInt @id @default(autoincrement())
+  steamid    BigInt @default(0) @db.UnsignedBigInt
+  itemdata   String @db.MediumText
+  inserttime BigInt
+  serverid   BigInt
+  downloaded Int    @default(0) @db.TinyInt
+
+  @@index([steamid, serverid, downloaded], map: "index1")
+  @@index([serverid, inserttime], map: "index2")
+}
+
+model permissiongroups {
+  Id          Int    @id @default(autoincrement())
+  GroupName   String @unique(map: "GroupName_UNIQUE") @db.VarChar(128)
+  Permissions String @default("") @db.VarChar(768)
+}
+
+model playerbases {
+  Id         Int    @id @default(autoincrement())
+  SteamId    BigInt
+  BaseLoc    String @default("0,0,0") @db.VarChar(255)
+  CustomLocs String @default("") @db.VarChar(255)
+  Map        String @default("") @db.VarChar(100)
+
+  @@unique([SteamId, Map], map: "SteamId_UNIQUE")
+}
+
+model players {
+  Id                    Int    @id @default(autoincrement())
+  SteamId               BigInt @unique(map: "SteamId_UNIQUE")
+  PermissionGroups      String @default("Default,") @db.VarChar(256)
+  TimedPermissionGroups String @default("") @db.VarChar(256)
+}
+
+model single_whitelists {
+  SteamId     BigInt  @unique(map: "SteamId") @default(0) @db.UnsignedBigInt
+  WhitelistOn String? @default("") @db.VarChar(50)
+}
+
+model tokenbank_players {
+  Id         Int     @id @default(autoincrement())
+  SteamId    BigInt  @default(0) @db.UnsignedBigInt
+  Tokens     Int?    @default(0)
+  TokenType  String? @default("Default") @db.VarChar(50)
+  TotalSpent Int?    @default(0)
+
+  @@unique([SteamId, TokenType], map: "SteamId_UNIQUE")
+}
+
+model tribepermissions {
+  Id                    Int    @id @default(autoincrement())
+  TribeId               BigInt @unique(map: "SteamId_UNIQUE")
+  PermissionGroups      String @default("") @db.VarChar(256)
+  TimedPermissionGroups String @default("") @db.VarChar(256)
+}
+
+model whitelist {
+  whitelisted_user String @id @db.VarChar(25)
+}
+
+model wshop_cooldowns {
+  steamid      BigInt
+  type         Int
+  identifier   BigInt
+  cooldown     BigInt?
+  times_bought BigInt  @default(0)
+
+  @@id([steamid, type, identifier])
+}
+
+model wtribes_events {
+  ID        BigInt  @id @unique(map: "SteamID_UNIQUE") @default(autoincrement()) @db.UnsignedBigInt
+  TribeID   Int?    @default(0)
+  EventType Int?    @default(0)
+  SteamID   BigInt? @default(0)
+  ServerID  BigInt? @default(0)
+  TribeName String? @db.VarChar(256)
+}
+
+model wtribes_log {
+  ID        BigInt @id @unique(map: "SteamID_UNIQUE") @default(autoincrement()) @db.UnsignedBigInt
+  Type      Int    @db.UnsignedInt
+  SteamID   BigInt @db.UnsignedBigInt
+  TribeID   Int?   @default(0) @db.UnsignedInt
+  Text      String @db.Text
+  TimeStamp BigInt @db.UnsignedBigInt
+}
+
+model wtribes_playerdata {
+  SteamID            BigInt  @id @unique(map: "SteamID_UNIQUE") @db.UnsignedBigInt
+  TribeID            Int?    @default(0) @db.UnsignedInt
+  PlayerID           Int?    @default(0) @db.UnsignedInt
+  CharacterName      String? @db.VarChar(50)
+  LastMap            String? @db.VarChar(25)
+  LastLeaveTribeTime BigInt? @db.UnsignedBigInt
+  LastTribeCount     Int?
+  isOwnerInTribe     Int?    @default(0) @db.TinyInt
+  isAdminInTribe     Int?    @default(0) @db.TinyInt
+}
+
+model wtribes_playerids {
+  PlayerID Int    @id @unique(map: "PlayerID_UNIQUE")
+  SteamID  BigInt
+}
+
+model wtribes_reserved_names {
+  Type       Int     @db.UnsignedInt
+  SteamID    BigInt  @db.UnsignedBigInt
+  ExpireTime BigInt  @db.UnsignedBigInt
+  Name       String? @db.VarChar(160)
+
+  @@id([SteamID, Type])
+  @@unique([SteamID, Type], map: "Type_UNIQUE")
+}
+
+model wtribes_tribedata {
+  TribeID                          Int     @id @unique(map: "TribeID_UNIQUE") @db.UnsignedInt
+  OwnerSteamID                     BigInt  @db.UnsignedBigInt
+  TribeName                        String? @db.VarChar(255)
+  LastNameChange                   BigInt? @db.UnsignedBigInt
+  LastTimeMemberLeft               BigInt? @db.UnsignedBigInt
+  LastTribeCount                   Int?
+  Members                          Bytes?  @db.Blob
+  TribeGovern_PINCode              Int?
+  TribeGovern_DinoOwnership        Int?
+  TribeGovern_StructureOwnership   Int?
+  TribeGovern_DinoTaming           Int?
+  TribeGovern_DinoUnclaimAdminOnly Int?
+}
+
+model wtribes_tribelog_webhooks {
+  TribeID  Int     @unique(map: "TS_UNIQUE") @db.UnsignedInt
+  ServerID Int     @db.UnsignedInt
+  WebHook  String? @db.VarChar(160)
+
+  @@id([TribeID, ServerID])
+}

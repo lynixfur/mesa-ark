@@ -82,7 +82,7 @@ The cluster wants to provide the experience closest to the official server.</p>
         </div>
       </section>
 
-      <section className="bg-mesa-gray">
+      <section className="bg-mesa-gray hidden">
         <h2 className="font-extrabold uppercase p-5 pl-0 text-white text-center text-4xl">SEASON 1 TRAILER</h2>
         <p className="font-bold text-white text-center pb-5">Explore season 1 by watching this short trailer.</p>
         <div className="flex justify-center">
@@ -90,7 +90,7 @@ The cluster wants to provide the experience closest to the official server.</p>
         </div>
       </section>
 
-      <section className="text-black bg-mesa-black">
+      <section className="text-black bg-mesa-black hidden">
        <div className="px-10 sm:px-40 py-20">
           <div className="text-white">
           <h2 className="font-extrabold uppercase text-mesa-blue text-4xl pb-5">About Mesa ARK</h2>

@@ -18,8 +18,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const search = req.query.search ? req.query.search : ""
   const ranking_data = await prisma.advancedachievements_playerdata.findMany({
     orderBy: req.query.sort_by ? JSON.parse(req.query.sort_by as SortBy) : {},
-    skip: 20 * (req.query.page as Page ? req.query.page as Page : 0), // Page ID
-    take: 20,
+    skip: 15 * (req.query.page as Page ? req.query.page as Page : 0), // Page ID
+    take: 15,
     where: {
       PlayerName: {
         contains: search as Search

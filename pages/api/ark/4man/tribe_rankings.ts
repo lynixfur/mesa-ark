@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { Prisma, PrismaClient } from '@prisma/client'
 import { NextApiRequest, NextApiResponse } from 'next';
 
 
@@ -14,20 +14,26 @@ type Search = any;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 
-  const search = req.query.search ? req.query.search : ""
-  const ranking_data = await prisma.advancedachievements_tribedata.findMany({ 
-    where: {
-      TribeName: {
-        contains: search as Search
-      }
-    },
-    orderBy: {
-      DamageScore: 'desc',
-    },
-    skip: 20 * (parseInt(req.query.page as string) ? parseInt(req.query.page as string) : 0), // Page ID
-    take: 20,
-    select: { TribeName: true, DamageScore: true}
-  });
+  //const search = req.query.search ? req.query.search : ""
+
+  let search = req.query.search ? "%" + req.query.search + "%" : "%%";
+  const ranking_data =  await prisma.$queryRaw(Prisma.sql`
+  SELECT 
+  mesadb.advancedachievements_playerdata.TribeID, 
+  mesadb.advancedachievements_tribedata.TribeName,
+  mesadb.advancedachievements_tribedata.DamageScore,
+  Count(SteamID) as Members, 
+  Sum(PlayerKills) as Kills,
+  Sum(DeathByPlayer) as Deaths,
+  Sum(DinoKills) as DinoKills,
+  Sum(PlayTime) as PlayTime
+  FROM mesadb.advancedachievements_playerdata
+  INNER JOIN mesadb.advancedachievements_tribedata
+  ON mesadb.advancedachievements_playerdata.TribeID = mesadb.advancedachievements_tribedata.TribeID
+  WHERE mesadb.advancedachievements_tribedata.TribeName LIKE ${search}
+  GROUP BY mesadb.advancedachievements_playerdata.TribeID
+  ORDER BY mesadb.advancedachievements_tribedata.DamageScore DESC
+  LIMIT 15`)
 
 
   const safe_ranking_data = JSON.parse(JSON.stringify(ranking_data, (key, value) =>

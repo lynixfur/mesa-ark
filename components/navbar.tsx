@@ -13,6 +13,10 @@ const Navbar = ({ links }: Props) => {
 const [mobileMenu, setMobileMenu] = useState(false);
 const handleMobile = () => setMobileMenu(!mobileMenu);
 
+/* Server Dropdown */
+const [serverDropdown, setServerDropdown] = useState(false);
+const handleServerDropdown = () => setServerDropdown(!serverDropdown);
+
     return (
 <nav className="bg-mesa-gray border-b-1 border-gray-200 px-2 sm:px-4 py-2.5">
   <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -29,7 +33,15 @@ const handleMobile = () => setMobileMenu(!mobileMenu);
         <Link href="/" className="block py-2 pr-4 pl-3 text-white rounded text-white hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Home</Link>
       </li>
       <li>
-        <Link href="/servers" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Servers</Link>
+        <div className="relative">
+          <button onClick={handleServerDropdown} className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Servers</button>
+          <div className={serverDropdown ? 'absolute z-50 mt-3 w-48 shadow-lg origin-top-left left-0' : 'hidden z-50 mt-3 w-48 shadow-lg origin-top-left left-0'}>
+            <div className="ring-1 ring-black ring-opacity-5 py-1 bg-mesa-dropdown">
+              <Link className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out" href="/servers/6man">6 Mans Servers</Link>
+              <Link className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out" href="/servers/4man">4 Mans Servers</Link>
+            </div>
+          </div>
+        </div>
       </li>
       <li>
         <Link href="/leaderboards" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 uppercase font-bold transition-colors">Leaderboards</Link>
