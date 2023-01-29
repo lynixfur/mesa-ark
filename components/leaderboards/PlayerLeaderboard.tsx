@@ -25,6 +25,9 @@ const PlayerLeaderboard = () => {
     const [clusterDropdown, setClusterDropdown] = useState(false);
     const handleClusterDropdown = () => setClusterDropdown(!clusterDropdown);
 
+    /* Filter Dropdown */
+    const [filterDropdown, setFilterDropdown] = useState(false);
+    const handleFilterDropdown = () => setFilterDropdown(!filterDropdown);
 
     /* Cluster Filter */
     const [clusterUrl, setClusterUrl] = useState(`/api/ark/4man/player_rankings`);
@@ -34,18 +37,18 @@ const PlayerLeaderboard = () => {
 
     useEffect(() => {
         const timerId = setTimeout(() => {
-          if(clusterFilter == 1) {
-            setClusterUrl(`/api/ark/6man/player_rankings`)
-            setClusterDropdown(false)
-          } else {
-            setClusterUrl(`/api/ark/4man/player_rankings`)
-            setClusterDropdown(false)
-          }
-          console.log(clusterUrl)
+            if (clusterFilter == 1) {
+                setClusterUrl(`/api/ark/6man/player_rankings`)
+                setClusterDropdown(false)
+            } else {
+                setClusterUrl(`/api/ark/4man/player_rankings`)
+                setClusterDropdown(false)
+            }
+            console.log(clusterUrl)
         }, 250);
-        
+
         return () => {
-          clearTimeout(timerId);
+            clearTimeout(timerId);
         };
     }, [clusterFilter]);
 
@@ -71,20 +74,20 @@ const PlayerLeaderboard = () => {
     });
 
     return (<>
-        <h2 className="font-extrabold text-mesa-orange uppercase text-xl mt-5">
+        <h2 className="font-extrabold text-gray-300 uppercase text-xl mt-5">
             Player Leaderboards
         </h2>
         {/* Filters */}
         <div className="my-2 flex space-x-4 items-center">
             <input value={search}
                 onChange={handleOnChange}
-                placeholder="Search for Players" name="tribe_search" id="tribe_search" className="px-3 py-2 text-gray-300 bg-mesa-gray w-1/2 border-gray-500 border" />
+                placeholder="Search for Players" name="tribe_search" id="tribe_search" className="px-3 py-2 text-gray-300 bg-bgray-overlay w-1/2 border-gray-700 border rounded-full" />
 
             <div className="relative">
-                <button onClick={handleClusterDropdown} className="px-3 py-2 text-white bg-mesa-orange font-bold">
+                <button onClick={handleClusterDropdown} className="px-3 py-2 text-white bg-bgray-overlay font-bold rounded-full">
                     {clusterDropdown
-                        ? <>Cluster: {clusterFilter == 0 && "4"} {clusterFilter == 1 && "6"} Man <i className="ml-1 fa-solid fa-angle-up"></i></>
-                        : <>Cluster: {clusterFilter == 0 && "4"} {clusterFilter == 1 && "6"} Man <i className="ml-1 fa-solid fa-angle-down"></i></>
+                        ? <>{clusterFilter == 0 && "4"} {clusterFilter == 1 && "6"} Man <i className="ml-1 fa-solid fa-angle-up"></i></>
+                        : <>{clusterFilter == 0 && "4"} {clusterFilter == 1 && "6"} Man <i className="ml-1 fa-solid fa-angle-down"></i></>
                     }
                 </button>
                 <div className={clusterDropdown ? 'absolute z-50 mt-3 w-48 shadow-lg origin-top-left left-0' : 'hidden z-50 mt-3 w-48 shadow-lg origin-top-left left-0'}>
@@ -94,27 +97,26 @@ const PlayerLeaderboard = () => {
                     </div>
                 </div>
             </div>
+
+            <div className="relative">
+                <button onClick={handleFilterDropdown} className="px-3 py-2 text-white bg-bgray-overlay font-bold rounded-full">
+                    Sort By : ??? <i className="ml-1 fa-solid fa-angle-down" />
+                </button>
+                <div className={filterDropdown ? 'absolute z-50 mt-3 w-48 shadow-lg origin-top-left left-0' : 'hidden z-50 mt-3 w-48 shadow-lg origin-top-left left-0'}>
+                    <div className="ring-1 ring-black ring-opacity-5 py-1 bg-mesa-dropdown rounded-2xl">
+                        <button className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out">Kills</button>
+                        <button className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out">Deaths</button>
+                        <button className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out">Tame Kills</button>
+                        <button className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out">Time Played</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
         {/* Table */}
         <div className="pb-12">
             {data ? (
                 <>
-                    <div className="text-gray-700 px-4 py-3 mt-10 hidden" role="alert">
-                        <div className="">
-                            <div className="my-auto flex justify-center mb-5">
-                                <i className="fa-solid fa-triangle-exclamation text-5xl text-mesa-orange" />
-                            </div>
-                            <div>
-                                <p className="font-bold text-2xl text-center text-mesa-orange uppercase">
-                                    Player Rankings Disabled
-                                </p>
-                                <p className="text-lg text-black uppercase font-bold mt-2 text-center">
-                                    We are noticing an issue with our new KD system.<br />
-                                    Some players have Infinity KD, Impressive!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                     <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4">
                         <div>
                             <div className="mb-10">
@@ -124,7 +126,7 @@ const PlayerLeaderboard = () => {
                                         v-if="$page.props.stats != null"
                                     >
                                         <tbody>
-                                            <tr className="focus:outline-none h-12 border-t border-b-[1px] border-mesa-black bg-mesa-orange">
+                                            <tr className="focus:outline-none h-12 border-t border-b-[2px] border-bgray-bg bg-bgray-overlay">
                                                 <td className={search ? "hidden" : "pl-5"}>
                                                     <div className="flex items-center">
                                                         <p className="text-base leading-none text-white font-bold uppercase">
@@ -184,7 +186,7 @@ const PlayerLeaderboard = () => {
                                             </tr>
                                             {ranking_players?.map((player: any, rank: any) => {
                                                 return (
-                                                    <tr key={player?.PlayerName} className="focus:outline-none h-12 border-t border-b-[1px] border-mesa-black bg-mesa-gray">
+                                                    <tr key={player?.PlayerName} className="focus:outline-none h-12 border-t border-b-[2px] border-bgray-bg bg-bgray-secondary">
                                                         <td className={search ? "hidden" : "pl-5"}>
                                                             <div className="flex items-center">
                                                                 <p className="text-base leading-none text-white font-bold">
@@ -289,6 +291,17 @@ const PlayerLeaderboard = () => {
                     </div>
                 </div>
             )}
+            <p className="text-gray-300">Page <strong>{data?.pagination?.current_page + 1}</strong> of <strong>{data?.pagination?.total_pages + 1}</strong></p>
+            <div className="flex space-x-2 mt-3">
+                {data?.pagination?.prev ?
+                    <a href={(data?.pagination?.prev).replace("https://bloody.gg/api/hub/rankings", "https://bloody.gg/hub/rankings")} className="inline-flex items-center px-3 py-1 font-bold leading-6 text-md shadow rounded-full text-gray-100  bg-bgray-overlay transition ease-in-out duration-150">  <i className="fa-solid fa-arrow-left m-1 mr-2 my-auto"></i> Previous</a>
+                    : <></>
+                }
+                {data?.pagination?.next ?
+                    <a href={(data?.pagination?.next).replace("https://bloody.gg/api/hub/rankings", "https://bloody.gg/hub/rankings")} className="inline-flex items-center px-3 py-1 font-bold leading-6 text-md shadow rounded-full text-gray-100 bg-bgray-overlay transition ease-in-out duration-150">  Next <i className="fa-solid fa-arrow-right m-1 ml-1 my-auto"></i></a>
+                    : <></>
+                }
+            </div>
         </div>
     </>)
 }

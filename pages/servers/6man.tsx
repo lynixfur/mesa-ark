@@ -28,11 +28,22 @@ const ServerList = ({servers}: ServerProps) => (
       </Head>
       <Navbar links={null}/>
       
-      <section className="min-h-[900px] p-10 bg-mesa-black">
+      <section className="min-h-[900px] p-10 bg-bgray-bg">
 
-      <h2 className="font-extrabold uppercase text-white text-4xl mb-5">6 MAN SERVERS</h2>
+      <h3 className="font-extrabold uppercase text-white text-4xl mb-5"><i className="fa-solid fa-circle-question"></i> Having trouble joining?</h3>
+        <p className="mb-5 text-base text-gray-100 sm:text-lg text-left">We can help you! Follow this simple step-by-step guide to get started.</p>
+        <p className="mb-5 text-gray-300 sm:text-lg text-left">
+          Step 1: Open Steam and click on view and then servers<br />
+          Step 2: Click on favorites tab and then add a server<br />
+          Step 3: Enter the following Server IP below then click add this address to favorites<br />
+          Step 4: Start Ark Survival and click Join ARK<br />
+          Step 5: Filter for favorites and ensure all other filters are reset<br />
+          Step 6: The server should now visible for you!!<br />
+        </p>
 
-        <div className="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 mb-5">
+      <h2 className="font-extrabold uppercase text-white text-4xl mb-5"><i className="fa-solid fa-server"></i> 6 MAN SERVERS</h2>
+      
+        <div className="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {servers.lenght == 0 && <h1 className="text-white">There&apos;s currently no servers online!</h1>}
           {servers.map((server: any) => (
             <ServerCard key={server?.id} server={server}/>

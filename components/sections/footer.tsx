@@ -2,7 +2,7 @@
 import Link from "next/link"
 
 const Footer = () => (
-<footer className="bg-mesa-gray body-font bg-bgray-secondary">
+<footer className="bg-bgray-secondary body-font">
       <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <nav className="list-none mb-5 flex justify-center sm:justify-left sm:block">
@@ -79,6 +79,7 @@ const Footer = () => (
                 />
               </nav>
             </a>
+            <div className="opacity-0">Legoshi is my spirit animal</div>
           </div>
         </div>
       </div>

@@ -12,7 +12,12 @@ module.exports = {
         "mesa-black": "#141414",
         "mesa-orange":"#fc3d10",
         "mesa-blue": "#02a1a0",
-        "mesa-dropdown": "#3e3e3e"
+        "mesa-dropdown": "#3e3e3e",
+        'bgray-bg': '#121317',
+        'bgray-secondary': '#1A1C23',
+        'bgray-overlay': '#272a35',
+        'bgray-forward':'#393D4C',
+        'bgray-dropdown':'#191a20',
       },
     },
   },

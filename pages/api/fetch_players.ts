@@ -21,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                 $set: { is_online: data.is_online, players: parseInt(data.players), password: data.password, private: data.private }
             });
     
-            console.log(`Players : ${data.players} , Online ${data.is_online}`);
+            console.log(`Server Name : ${server.name} , Players : ${data.players} , Online ${data.is_online}`);
         } catch(e) {
             console.log('ShadowmaneAPI Error Caught: ' + e)
         }

@@ -34,13 +34,13 @@ const Leaderboards = () => {
       </Head>
       <Navbar links={null} />
 
-      <section className="sm:p-5 p-10 bg-mesa-black min-h-screen">
+      <section className="sm:p-5 p-10 bg-bgray-bg min-h-screen">
         <h2 className="font-extrabold text-white uppercase text-4xl mb-5">
           <i className="fa-solid fa-trophy"></i> LEADERBOARDS
         </h2>
-        <div className="flex space-x-3">
-          <button onClick={changeToTribe} className="bg-mesa-orange w-full text-white font-bold py-2 px-5">Tribe Leaderboard</button>
-          <button onClick={changeToPlayer} className="bg-mesa-orange w-full text-white font-bold py-2 px-5">Player Leaderboard</button>
+        <div className="flex space-x-1">
+          <button onClick={changeToTribe} className="bg-bgray-overlay hover:bg-bgray-secondary transition-colors w-full text-white font-bold py-2 px-5 rounded-l-3xl">Tribe Leaderboard</button>
+          <button onClick={changeToPlayer} className="bg-bgray-overlay hover:bg-bgray-secondary transition-colors w-full text-white font-bold py-2 px-5 rounded-r-3xl">Player Leaderboard</button>
         </div>
 
         {activeTab == 0 &&
