@@ -254,18 +254,27 @@ const TribeLeaderboard = () => {
                     </div>
                 </div>
             ) : (
-                <div className="text-gray-700 px-4 py-3 mt-10" role="alert">
-                    <div className="">
-                        <div className="my-auto flex justify-center mb-5">
-                            <i className="fa-solid fa-spinner text-mesa-orange text-5xl animate-spin"></i>
-                        </div>
-                        <div>
-                            <p className="font-bold text-2xl text-center text-mesa-orange uppercase">
-                                LOADING
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <>
+                    {error ?
+                        <p>Error</p>
+                        : <div className="text-gray-700 px-4 py-3 mt-10" role="alert">
+                            <div>
+                                <div className="text-gray-700 px-4 py-3 mt-10" role="alert">
+                                    <div className="">
+                                        <div className="my-auto flex justify-center mb-5">
+                                            <i className="fa-solid fa-spinner text-mesa-orange text-5xl animate-spin"></i>
+                                        </div>
+                                        <div>
+                                            <p className="font-bold text-2xl text-center text-mesa-orange uppercase">
+                                                LOADING
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>}
+                </>
             )}
             <p className="text-gray-300">Page <strong>{data?.pagination?.current_page + 1}</strong> of <strong>{data?.pagination?.total_pages + 1}</strong></p>
             <div className="flex space-x-2 mt-3">
