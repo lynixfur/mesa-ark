@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useSWR from "swr";
 import fetcher from "../../libs/fetcher";
+import Dropdown from "../Dropdown";
 
 const TribeLeaderboard = () => {
 
@@ -21,28 +22,16 @@ const TribeLeaderboard = () => {
         };
     }, [search]);
 
-    /* Cluster Dropdown */
-    const [clusterDropdown, setClusterDropdown] = useState(false);
-    const handleClusterDropdown = () => setClusterDropdown(!clusterDropdown);
-
-    /* Filter Dropdown */
-    const [filterDropdown, setFilterDropdown] = useState(false);
-    const handleFilterDropdown = () => setFilterDropdown(!filterDropdown);
-
     /* Cluster Filter */
     const [clusterUrl, setClusterUrl] = useState(`/api/ark/4man/tribe_rankings`);
     const [clusterFilter, setClusterFilter] = useState(0);
-    const handlePrimaryCluster = () => setClusterFilter(0);
-    const handleSecondaryCluster = () => setClusterFilter(1);
 
     useEffect(() => {
         const timerId = setTimeout(() => {
             if (clusterFilter == 1) {
                 setClusterUrl(`/api/ark/6man/tribe_rankings`)
-                setClusterDropdown(false)
             } else {
                 setClusterUrl(`/api/ark/4man/tribe_rankings`)
-                setClusterDropdown(false)
             }
             console.log(clusterUrl)
         }, 250);
@@ -58,7 +47,21 @@ const TribeLeaderboard = () => {
     const nextPage = () => { setFilterPage(filterPage + 1) };
 
     /* Filter */
-    const [filter, setFilter] = useState('Kills');
+    const [filter, setFilter] = useState('Item 1');
+
+    const handleFilter = (filter: string) => {
+        console.log(filter);
+        setFilter(filter);
+    }
+
+    const handleClusterFilter = (filter: string) => {
+        console.log(filter);
+        if(filter == "4 Man") {
+            setClusterFilter(0);
+        } else {
+            setClusterFilter(1);
+        }
+    }
 
     /* Get Data */
     const { data, error }: any = useSWR(`${clusterUrl}?search=${debounceSearch}&page=${filterPage}`, fetcher)
@@ -74,34 +77,9 @@ const TribeLeaderboard = () => {
                 onChange={handleOnChange}
                 placeholder="Search for Tribes" name="tribe_search" id="tribe_search" className="px-3 py-2 text-gray-300 bg-bgray-overlay w-1/2 border-gray-700 border rounded-full" />
 
-            <div className="relative">
-                <button onClick={handleClusterDropdown} className="px-3 py-2 text-white bg-bgray-overlay font-bold rounded-full">
-                    {clusterDropdown
-                        ? <>{clusterFilter == 0 && "4"} {clusterFilter == 1 && "6"} Man <i className="ml-1 fa-solid fa-angle-up"></i></>
-                        : <>{clusterFilter == 0 && "4"} {clusterFilter == 1 && "6"} Man <i className="ml-1 fa-solid fa-angle-down"></i></>
-                    }
-                </button>
-                <div className={clusterDropdown ? 'absolute z-50 mt-3 w-48 shadow-lg origin-top-left left-0 rounded-2xl' : 'hidden z-50 mt-3 w-48 shadow-lg origin-top-left left-0 rounded-2xl'}>
-                    <div className="ring-1 ring-black ring-opacity-5 py-1 bg-mesa-dropdown rounded-2xl">
-                        <button onClick={handlePrimaryCluster} className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out">4 Man Cluster</button>
-                        <button onClick={handleSecondaryCluster} className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out">6 Man Cluster</button>
-                    </div>
-                </div>
-            </div>
+            <Dropdown dropdownTitle={`${clusterFilter == 0 ? '4' : '6'} Man`} dropdownItems={["4 Man", "6 Man"]} callback={handleClusterFilter}/>
 
-            <div className="relative">
-                <button onClick={handleFilterDropdown} className="px-3 py-2 text-white bg-bgray-overlay font-bold rounded-full">
-                    Filter By : {filter} <i className="ml-1 fa-solid fa-angle-down" />
-                </button>
-                <div className={filterDropdown ? 'absolute z-50 mt-3 w-48 shadow-lg origin-top-left left-0' : 'hidden z-50 mt-3 w-48 shadow-lg origin-top-left left-0'}>
-                    <div className="ring-1 ring-black ring-opacity-5 py-1 bg-mesa-dropdown rounded-2xl">
-                        <button className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out">Kills</button>
-                        <button className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out">Deaths</button>
-                        <button className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out">Tame Kills</button>
-                        <button className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out">Time Played</button>
-                    </div>
-                </div>
-            </div>
+            <Dropdown dropdownTitle={`Filter by : ${filter}`} dropdownItems={["Item 1", "Item 2", "Item 3", "Item 4"]} callback={handleFilter}/>
 
         </div>
 
