@@ -1,5 +1,18 @@
 import { Prisma, PrismaClient } from '@prisma/client'
 import { NextApiRequest, NextApiResponse } from 'next';
+import { env } from 'process';
+
+/* New Beta Feature */
+const knex = require('knex')({
+  client: 'mysql',
+  connection: {
+    host : env.MYSQL_HOST,
+    port : env.MYSQL_PORT,
+    user : env.MYSQL_USER,
+    password : env.MYSQL_PASSWORD,
+    database : env.MYSQL_DATABASE
+  }
+});
 
 
 const prisma = new PrismaClient()
@@ -20,31 +33,36 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   let search = req.query.search ? "%" + req.query.search + "%" : "%%";
   
 
-  let safeFilter = "mesadb.advancedachievements_tribedata.DamageScore"
+  let safeFilter = "DamageScore"
   switch(filter) {
+    case "Time Played":
+      safeFilter = "PlayTime"
+      break;
+    case "Kills":
+      safeFilter = "Kills"
+      break;
+    case "Deaths":
+      safeFilter = "Deaths"
+      break;
+    case "Tame Kills":
+      safeFilter = "DinoKills"
+      break;
     case "Time Played":
       safeFilter = "PlayTime"
       break;
   }
 
-  const ranking_data =  await prisma.$queryRaw`
-  SELECT 
-  mesadb.advancedachievements_playerdata.TribeID, 
-  mesadb.advancedachievements_tribedata.TribeName,
-  mesadb.advancedachievements_tribedata.DamageScore,
-  Count(SteamID) as Members, 
-  Sum(PlayerKills) as Kills,
-  Sum(DeathByPlayer) as Deaths,
-  Sum(DinoKills) as DinoKills,
-  Sum(PlayTime) as PlayTime
-  FROM mesadb.advancedachievements_playerdata
-  INNER JOIN mesadb.advancedachievements_tribedata
-  ON mesadb.advancedachievements_playerdata.TribeID = mesadb.advancedachievements_tribedata.TribeID
-  WHERE mesadb.advancedachievements_tribedata.TribeName LIKE ${search}
-  GROUP BY mesadb.advancedachievements_playerdata.TribeID
-  ORDER BY ${safeFilter} DESC
-  LIMIT 15`;
-
+  const ranking_data = await knex.table('advancedachievements_playerdata')
+  .select('advancedachievements_playerdata.TribeID', 'advancedachievements_tribedata.TribeName', 'advancedachievements_tribedata.DamageScore')
+  .innerJoin('advancedachievements_tribedata', 'advancedachievements_playerdata.TribeID', 'advancedachievements_tribedata.TribeID')
+  .sum('PlayerKills as Kills')
+  .sum('DeathByPlayer as Deaths')
+  .sum('DinoKills as DinoKills')
+  .sum('PlayTime as PlayTime')
+  .whereLike('advancedachievements_tribedata.TribeName', `%${search}%`)
+  .groupBy('advancedachievements_playerdata.TribeID')
+  .orderBy(safeFilter, 'desc')
+  .limit(20)
 
   const safe_ranking_data = JSON.parse(JSON.stringify(ranking_data, (key, value) =>
   typeof value === 'bigint'
