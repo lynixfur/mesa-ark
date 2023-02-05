@@ -80,9 +80,9 @@ const PlayerLeaderboard = () => {
         ranking_players.push(player);
     })
 
-    ranking_players.sort(function (a, b) {
+    /*ranking_players.sort(function (a, b) {
         return parseFloat(b.kd) - parseFloat(a.kd);
-    });
+    });*/
 
     return (<>
         <h2 className="font-extrabold text-gray-300 uppercase text-xl mt-5">

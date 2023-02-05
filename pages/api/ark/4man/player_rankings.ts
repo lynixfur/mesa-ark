@@ -16,8 +16,34 @@ type SortBy = any;
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 
   const search = req.query.search ? req.query.search : ""
+  const filter = req.query.filter ? req.query.filter : ""
+
+  let safeFilter = {}
+  switch(filter) {
+    case "Time Played":
+      safeFilter = {
+        PlayTime: "desc"
+      }
+      break;
+    case "Kills":
+      safeFilter = {
+        PlayerKills: "desc"
+      }
+      break;
+    case "Deaths":
+      safeFilter = {
+        DeathByPlayer: "desc"
+      }
+      break;
+    case "Tamed Dino Kills":
+      safeFilter = {
+        DinoKills: "desc"
+      }
+      break;
+  }
+
   const ranking_data = await prisma.advancedachievements_playerdata.findMany({
-    orderBy: req.query.sort_by ? JSON.parse(req.query.sort_by as SortBy) : {},
+    orderBy: safeFilter,
     skip: 15 * (req.query.page as Page ? req.query.page as Page : 0), // Page ID
     take: 15,
     where: {

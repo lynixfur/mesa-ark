@@ -42,6 +42,7 @@ const Leaderboards = () => {
           <button onClick={changeToTribe} className="bg-bgray-overlay hover:bg-bgray-secondary transition-colors w-full text-white font-bold py-2 px-5 rounded-l-3xl">Tribe Leaderboard</button>
           <button onClick={changeToPlayer} className="bg-bgray-overlay hover:bg-bgray-secondary transition-colors w-full text-white font-bold py-2 px-5 rounded-r-3xl">Player Leaderboard</button>
         </div>
+        <p className="my-4 text-orange-600"><strong><i className="fa-solid fa-triangle-exclamation"></i> Notice: </strong> Filtering by KD has been disabled to a bug, try again later.</p>
 
         {activeTab == 0 &&
           <TribeLeaderboard />

@@ -15,9 +15,19 @@ type Search = any;
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 
   //const search = req.query.search ? req.query.search : ""
+  const filter = req.query.filter ? req.query.filter : ""
 
   let search = req.query.search ? "%" + req.query.search + "%" : "%%";
-  const ranking_data =  await prisma.$queryRaw(Prisma.sql`
+  
+
+  let safeFilter = "mesadb.advancedachievements_tribedata.DamageScore"
+  switch(filter) {
+    case "Time Played":
+      safeFilter = "PlayTime"
+      break;
+  }
+
+  const ranking_data =  await prisma.$queryRaw`
   SELECT 
   mesadb.advancedachievements_playerdata.TribeID, 
   mesadb.advancedachievements_tribedata.TribeName,
@@ -32,8 +42,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   ON mesadb.advancedachievements_playerdata.TribeID = mesadb.advancedachievements_tribedata.TribeID
   WHERE mesadb.advancedachievements_tribedata.TribeName LIKE ${search}
   GROUP BY mesadb.advancedachievements_playerdata.TribeID
-  ORDER BY mesadb.advancedachievements_tribedata.DamageScore DESC
-  LIMIT 15`)
+  ORDER BY ${safeFilter} DESC
+  LIMIT 15`;
 
 
   const safe_ranking_data = JSON.parse(JSON.stringify(ranking_data, (key, value) =>
