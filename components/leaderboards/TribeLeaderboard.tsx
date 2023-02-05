@@ -52,6 +52,11 @@ const TribeLeaderboard = () => {
         };
     }, [clusterFilter]);
 
+    /* Pagination */
+    const [filterPage, setFilterPage] = useState(0);
+    const prevPage = () => { setFilterPage(filterPage - 1) };
+    const nextPage = () => { setFilterPage(filterPage + 1) };
+
     /* Get Data */
     const { data, error }: any = useSWR(`${clusterUrl}?search=${debounceSearch}`, fetcher)
 

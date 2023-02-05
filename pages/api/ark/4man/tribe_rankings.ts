@@ -58,7 +58,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   /* Return All Required Data */
   res.status(200).send({
     pagination: {
-      total_pages: Math.round(pages / 20) - 1,
+      total_pages: Math.round(pages / 20),
       current_page: parseInt(current_page as CurrentPage),
       next: next_page,
       prev: prev_page

@@ -35,6 +35,11 @@ const PlayerLeaderboard = () => {
     const handlePrimaryCluster = () => setClusterFilter(0);
     const handleSecondaryCluster = () => setClusterFilter(1);
 
+    /* Pagination */
+    const [filterPage, setFilterPage] = useState(0);
+    const prevPage = () => { setFilterPage(filterPage - 1) };
+    const nextPage = () => { setFilterPage(filterPage + 1) };
+
     useEffect(() => {
         const timerId = setTimeout(() => {
             if (clusterFilter == 1) {
