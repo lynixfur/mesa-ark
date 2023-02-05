@@ -281,17 +281,20 @@ const TribeLeaderboard = () => {
                         </div>}
                 </>
             )}
-            <p className="text-gray-300">Page <strong>{data?.pagination?.current_page + 1}</strong> of <strong>{data?.pagination?.total_pages + 1}</strong></p>
-            <div className="flex space-x-2 mt-3">
-                {data?.pagination?.prev ?
-                    <a href={(data?.pagination?.prev).replace("https://bloody.gg/api/hub/rankings", "https://bloody.gg/hub/rankings")} className="inline-flex items-center px-3 py-1 font-bold leading-6 text-md shadow rounded-full text-gray-100  bg-bgray-overlay transition ease-in-out duration-150">  <i className="fa-solid fa-arrow-left m-1 mr-2 my-auto"></i> Previous</a>
-                    : <></>
-                }
-                {data?.pagination?.next ?
-                    <a href={(data?.pagination?.next).replace("https://bloody.gg/api/hub/rankings", "https://bloody.gg/hub/rankings")} className="inline-flex items-center px-3 py-1 font-bold leading-6 text-md shadow rounded-full text-gray-100 bg-bgray-overlay transition ease-in-out duration-150">  Next <i className="fa-solid fa-arrow-right m-1 ml-1 my-auto"></i></a>
-                    : <></>
-                }
-            </div>
+            {data &&
+                <>
+                    <p className="text-gray-300">Page <strong>{data?.pagination?.current_page + 1}</strong> of <strong>{data?.pagination?.total_pages + 1}</strong></p>
+                    <div className="flex space-x-2 mt-3">
+                        {data?.pagination?.prev ?
+                            <button onClick={prevPage} className="inline-flex items-center px-3 py-1 font-bold leading-6 text-md shadow rounded-full text-gray-100  bg-bgray-overlay transition ease-in-out duration-150">  <i className="fa-solid fa-arrow-left m-1 mr-2 my-auto"></i> Previous</button>
+                            : <></>
+                        }
+                        {data?.pagination?.next ?
+                            <button onClick={nextPage} className="inline-flex items-center px-3 py-1 font-bold leading-6 text-md shadow rounded-full text-gray-100 bg-bgray-overlay transition ease-in-out duration-150">  Next <i className="fa-solid fa-arrow-right m-1 ml-1 my-auto"></i></button>
+                            : <></>
+                        }
+                    </div>
+                </>}
         </div>
     </>)
 }
