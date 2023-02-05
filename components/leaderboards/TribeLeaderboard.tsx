@@ -57,8 +57,11 @@ const TribeLeaderboard = () => {
     const prevPage = () => { setFilterPage(filterPage - 1) };
     const nextPage = () => { setFilterPage(filterPage + 1) };
 
+    /* Filter */
+    const [filter, setFilter] = useState('Kills');
+
     /* Get Data */
-    const { data, error }: any = useSWR(`${clusterUrl}?search=${debounceSearch}`, fetcher)
+    const { data, error }: any = useSWR(`${clusterUrl}?search=${debounceSearch}&page=${filterPage}`, fetcher)
 
     return (<>
         <h2 className="font-extrabold text-gray-300 uppercase text-xl mt-5">
@@ -88,7 +91,7 @@ const TribeLeaderboard = () => {
 
             <div className="relative">
                 <button onClick={handleFilterDropdown} className="px-3 py-2 text-white bg-bgray-overlay font-bold rounded-full">
-                    Sort By : ??? <i className="ml-1 fa-solid fa-angle-down" />
+                    Filter By : {filter} <i className="ml-1 fa-solid fa-angle-down" />
                 </button>
                 <div className={filterDropdown ? 'absolute z-50 mt-3 w-48 shadow-lg origin-top-left left-0' : 'hidden z-50 mt-3 w-48 shadow-lg origin-top-left left-0'}>
                     <div className="ring-1 ring-black ring-opacity-5 py-1 bg-mesa-dropdown rounded-2xl">
