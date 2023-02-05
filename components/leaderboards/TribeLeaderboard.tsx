@@ -47,7 +47,7 @@ const TribeLeaderboard = () => {
     const nextPage = () => { setFilterPage(filterPage + 1) };
 
     /* Filter */
-    const [filter, setFilter] = useState('Item 1');
+    const [filter, setFilter] = useState('Tribe Damage');
 
     const handleFilter = (filter: string) => {
         console.log(filter);
@@ -64,7 +64,7 @@ const TribeLeaderboard = () => {
     }
 
     /* Get Data */
-    const { data, error }: any = useSWR(`${clusterUrl}?search=${debounceSearch}&page=${filterPage}`, fetcher)
+    const { data, error }: any = useSWR(`${clusterUrl}?search=${debounceSearch}&page=${filterPage}&filter=${filter}`, fetcher)
 
     return (<>
         <h2 className="font-extrabold text-gray-300 uppercase text-xl mt-5">
@@ -79,7 +79,7 @@ const TribeLeaderboard = () => {
 
             <Dropdown dropdownTitle={`${clusterFilter == 0 ? '4' : '6'} Man`} dropdownItems={["4 Man", "6 Man"]} callback={handleClusterFilter}/>
 
-            <Dropdown dropdownTitle={`Filter by : ${filter}`} dropdownItems={["Item 1", "Item 2", "Item 3", "Item 4"]} callback={handleFilter}/>
+            <Dropdown dropdownTitle={`Filter by : ${filter}`} dropdownItems={["Tribe Damage", "Kills", "Deaths", "Tame Kills", "Time Played"]} callback={handleFilter}/>
 
         </div>
 

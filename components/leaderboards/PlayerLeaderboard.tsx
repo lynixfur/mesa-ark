@@ -32,7 +32,7 @@ const PlayerLeaderboard = () => {
     const nextPage = () => { setFilterPage(filterPage + 1) };
 
     /* Filter */
-    const [filter, setFilter] = useState('Item 1');
+    const [filter, setFilter] = useState('Kills');
 
     const handleFilter = (filter: string) => {
         console.log(filter);
@@ -65,7 +65,7 @@ const PlayerLeaderboard = () => {
 
     /* Get Data */
 
-    const { data, error }: any = useSWR(`${clusterUrl}?search=${debounceSearch}&page=${filterPage}`, fetcher)
+    const { data, error }: any = useSWR(`${clusterUrl}?search=${debounceSearch}&page=${filterPage}&filter=${filter}`, fetcher)
 
     var ranking_players: any[] = [];
 
@@ -96,7 +96,7 @@ const PlayerLeaderboard = () => {
 
             <Dropdown dropdownTitle={`${clusterFilter == 0 ? '4' : '6'} Man`} dropdownItems={["4 Man", "6 Man"]} callback={handleClusterFilter}/>
 
-            <Dropdown dropdownTitle={`Filter by : ${filter}`} dropdownItems={["Item 1", "Item 2", "Item 3", "Item 4"]} callback={handleFilter}/>
+            <Dropdown dropdownTitle={`Filter by : ${filter}`} dropdownItems={["Time Played", "Kills", "Deaths", "Tamed Dino Kills"]} callback={handleFilter}/>
 
         </div>
         {/* Table */}
@@ -137,7 +137,7 @@ const PlayerLeaderboard = () => {
                                                 <td className="pl-5">
                                                     <div className="flex items-center">
                                                         <p className="text-base leading-none text-white font-bold uppercase">
-                                                            Play Time
+                                                            Time Played
                                                         </p>
                                                     </div>
                                                 </td>
