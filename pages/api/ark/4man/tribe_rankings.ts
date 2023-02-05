@@ -47,10 +47,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     case "Tame Kills":
       safeFilter = "DinoKills"
       break;
-    case "Time Played":
-      safeFilter = "PlayTime"
-      break;
   }
+
+  const current_page = Number(req.query?.page ? req.query?.page : 0);
 
   const ranking_data = await knex.table('advancedachievements_playerdata')
   .select('advancedachievements_playerdata.TribeID', 'advancedachievements_tribedata.TribeName', 'advancedachievements_tribedata.DamageScore')
@@ -63,6 +62,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   .groupBy('advancedachievements_playerdata.TribeID')
   .orderBy(safeFilter, 'desc')
   .limit(20)
+  .offset(20 * current_page)
 
   const safe_ranking_data = JSON.parse(JSON.stringify(ranking_data, (key, value) =>
   typeof value === 'bigint'
@@ -70,7 +70,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       : value // return everything else unchanged
   ));
 
-  const current_page = (req.query.page ? req.query.page : 0);
   const pages = await prisma.advancedachievements_tribedata.count({});
   var next_page = null;
   var prev_page = null;
@@ -87,7 +86,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   res.status(200).send({
     pagination: {
       total_pages: Math.round(pages / 20),
-      current_page: parseInt(current_page as CurrentPage),
+      current_page: current_page,
       next: next_page,
       prev: prev_page
     },
