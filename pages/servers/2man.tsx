@@ -44,7 +44,7 @@ const ServerList = ({servers}: ServerProps) => (
       <h2 className="font-extrabold uppercase text-white text-4xl mb-5"><i className="fa-solid fa-server"></i> 6 MAN SERVERS</h2>
       
         <div className="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-          {servers.length ? servers.length : 0 == 0 && <h1 className="text-white">There&apos;s currently no servers online!</h1>}
+          {servers.length == 0 && <h1 className="text-white">There&apos;s currently no servers online!</h1>}
           {servers.map((server: any) => (
             <ServerCard key={server?.id} server={server}/>
           ))}
