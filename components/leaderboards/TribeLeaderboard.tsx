@@ -29,7 +29,7 @@ const TribeLeaderboard = () => {
     useEffect(() => {
         const timerId = setTimeout(() => {
             if (clusterFilter == 1) {
-                setClusterUrl(`/api/ark/6man/tribe_rankings`)
+                setClusterUrl(`/api/ark/2man/tribe_rankings`)
             } else {
                 setClusterUrl(`/api/ark/4man/tribe_rankings`)
             }
@@ -77,7 +77,7 @@ const TribeLeaderboard = () => {
                 onChange={handleOnChange}
                 placeholder="Search for Tribes" name="tribe_search" id="tribe_search" className="px-3 py-2 text-gray-300 bg-bgray-overlay w-1/2 border-gray-700 border rounded-full" />
 
-            <Dropdown dropdownTitle={`${clusterFilter == 0 ? '4' : '6'} Man`} dropdownItems={["4 Man", "6 Man"]} callback={handleClusterFilter}/>
+            <Dropdown dropdownTitle={`${clusterFilter == 0 ? '4' : '2'} Man`} dropdownItems={["4 Man", "2 Man"]} callback={handleClusterFilter}/>
 
             <Dropdown dropdownTitle={`Filter by : ${filter}`} dropdownItems={["Tribe Damage", "Kills", "Deaths", "Tame Kills", "Time Played"]} callback={handleFilter}/>
 
