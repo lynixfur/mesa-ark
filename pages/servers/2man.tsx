@@ -41,7 +41,7 @@ const ServerList = ({servers}: ServerProps) => (
           Step 6: The server should now visible for you!!<br />
         </p>
 
-      <h2 className="font-extrabold uppercase text-white text-4xl mb-5"><i className="fa-solid fa-server"></i> 6 MAN SERVERS</h2>
+      <h2 className="font-extrabold uppercase text-white text-4xl mb-5"><i className="fa-solid fa-server"></i> 2 MAN SERVERS</h2>
       
         <div className="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {servers.length == 0 && <h1 className="text-white">There&apos;s currently no servers online!</h1>}
