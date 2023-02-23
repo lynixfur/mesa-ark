@@ -66,7 +66,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       : value // return everything else unchanged
   ));
 
-  const count = ranking_data.length;
+  const count = await knex.table('advancedachievements_tribedata').select('TribeName')
   var next_page = null;
   var prev_page = null;
 
@@ -81,7 +81,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   /* Return All Required Data */
   res.status(200).send({
     pagination: {
-      total_pages: Math.round(count / 20),
+      total_pages: Math.round(count.length / 20),
       current_page: current_page,
       next: next_page,
       prev: prev_page
