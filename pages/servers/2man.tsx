@@ -62,7 +62,7 @@ export async function getServerSideProps() {
   console.log("[ShadowmaneAPI] DEBUG: Fetched Server List");
 
   const servers_res = await fetch(
-    "https://mesa-ark.com/api/servers/6men"
+    "https://mesa-ark.com/api/servers/2men"
   );
 
 
