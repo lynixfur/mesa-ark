@@ -5,10 +5,10 @@ import { env } from 'process';
 const knex = require('knex')({
   client: 'mysql',
   connection: {
-    host : env.MYSQL_HOST,
-    port : env.MYSQL_PORT,
-    user : env.MYSQL_USER,
-    password : env.MYSQL_PASSWORD,
+    host : env.MYSQL_HOST_2,
+    port : env.MYSQL_PORT_2,
+    user : env.MYSQL_USER_2,
+    password : env.MYSQL_PASSWORD_2,
     database : env.MYSQL_DATABASE_2
   }
 });

@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const servers = await db.collection("servers").find({}).project({ is_online: 1, players: 1, arkservers_api_key: 1 }).toArray();
     
     servers.forEach(async (server: any) => {
-        try {
+        /*try {
             const res = await fetch(`https://ark-servers.net/api/?object=servers&element=detail&key=${server.arkservers_api_key}`);
             const data = await res.json();
     
@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             console.log(`Server Name : ${server.name} , Players : ${data.players} , Online ${data.is_online}`);
         } catch(e) {
             console.log('ShadowmaneAPI Error Caught: ' + e)
-        }
+        }*/
     })
 
     res.status(200).json({status: 'completed'})

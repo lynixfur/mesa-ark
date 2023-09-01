@@ -39,7 +39,7 @@ const handleServerDropdown = () => setServerDropdown(!serverDropdown);
           <div className={serverDropdown ? 'absolute z-50 mt-3 w-48 shadow-lg origin-top-left left-0 rounded-2xl' : 'hidden z-50 mt-3 w-48 shadow-lg origin-top-left left-0 rounded-2xl'}>
             <div className="ring-1 ring-black ring-opacity-5 py-1 bg-mesa-dropdown rounded-2xl">
             <Link className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out" href="/servers/4man">4 Man</Link>
-              <Link className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out" href="/servers/2man">2 Man</Link>
+              <Link className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out" href="/servers/3man">3 Man</Link>
             </div>
           </div>
         </div>

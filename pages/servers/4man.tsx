@@ -58,15 +58,28 @@ const ServerList = ({servers}: ServerProps) => (
     </div>
 )
 
+async function fetchServerList() {
+  try {
+    const servers_res = await fetch(
+      "https://mesa-ark.com/api/servers/4men"
+    );
+
+    if (!servers_res.ok) {
+      throw new Error("Failed to fetch server list");
+    }
+
+    const servers = await servers_res.json();
+    return servers;
+  } catch (error) {
+    console.error("[ShadowmaneAPI] Error fetching server list:", error);
+    return null;
+  }
+}
+
 export async function getServerSideProps() {
   console.log("[ShadowmaneAPI] DEBUG: Fetched Server List");
 
-  const servers_res = await fetch(
-    "https://mesa-ark.com/api/servers/4men"
-  );
-
-
- var servers = await servers_res.json();
+  const servers = await fetchServerList();
 
   return {
     props: {
@@ -75,4 +88,4 @@ export async function getServerSideProps() {
   };
 }
 
-export default ServerList
+export default ServerList;

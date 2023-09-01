@@ -202,17 +202,45 @@ Note:<br />
 )
 
 export async function getServerSideProps() {
-  const res_player_count = await fetch(
-    "https:/mesa-ark.com/api/player_count"
-  );
+  /*try {
+    const res_player_count = await fetch(
+      "https://mesa-ark.com/api/player_count"
+    );
 
-  const player_count = await res_player_count.json();
+    if (!res_player_count.ok) {
+      console.error("An error occurred while fetching data for player count.");
+    }
 
+    const player_count = await res_player_count.json();
+
+    // If 'players' property is not available in the response, default it to 0
+    const playerCountWithFallback = {
+      players: player_count?.players || 0,
+    };
+
+    return {
+      props: {
+        player_count: playerCountWithFallback,
+      },
+    };
+  } catch (error) {
+    // Handle the error gracefully
+    console.error("An error occurred while fetching data:", error);
+
+    return {
+      props: {
+        player_count: { players: 0 },
+        error: "An error occurred while fetching data.",
+      },
+    };
+  }*/
   return {
     props: {
-      player_count,
+      player_count: { players: 0 },
+      error: "Data Disabled.",
     },
   };
 }
+
 
 export default Home
