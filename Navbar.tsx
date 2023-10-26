@@ -16,7 +16,7 @@ const handleMobile = () => setMobileMenu(!mobileMenu);
 /* Server Dropdown */
 const [serverDropdown, setServerDropdown] = useState(false);
 const handleServerDropdown = () => setServerDropdown(!serverDropdown);
-
+  /* Test */
     return (
       <>
 <nav className="bg-bgray-bg border-b-2 border-gray-700 px-2 sm:px-4 py-2.5">
