@@ -3,14 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 import useSWR from "swr";
 import axios from "axios";
-import Footer from '../components/sections/footer'
+import Footer from '../components/Footer'
 
 /* Leaderboard Components */
-import TribeLeaderboard from "../components/leaderboards/TribeLeaderboard";
-import PlayerLeaderboard from "../components/leaderboards/PlayerLeaderboard";
+import TribeLeaderboard from "../components/Leaderboards/TribeLeaderboard.tsx";
+import PlayerLeaderboard from "../components/Leaderboards/PlayerLeaderboard.tsx";
 
 const Leaderboards = () => {
 
@@ -39,10 +39,19 @@ const Leaderboards = () => {
           <i className="fa-solid fa-trophy"></i> LEADERBOARDS
         </h2>
         <div className="flex space-x-1">
-          <button onClick={changeToTribe} className="bg-bgray-overlay hover:bg-bgray-secondary transition-colors w-full text-white font-bold py-2 px-5 rounded-l-3xl">Tribe Leaderboard</button>
-          <button onClick={changeToPlayer} className="bg-bgray-overlay hover:bg-bgray-secondary transition-colors w-full text-white font-bold py-2 px-5 rounded-r-3xl">Player Leaderboard</button>
+            <button
+                onClick={changeToTribe}
+                className={`bg-bgray-overlay hover:bg-bgray-secondary transition-colors w-full text-white font-bold py-2 px-5 ${activeTab === 0 ? 'text-orange-600' : ''}`}
+            >
+                <i className="fa-solid fa-users"></i> Tribe Leaderboard
+            </button>
+            <button
+                onClick={changeToPlayer}
+                className={`bg-bgray-overlay hover:bg-bgray-secondary transition-colors w-full text-white font-bold py-2 px-5 ${activeTab === 1 ? 'text-orange-600' : ''}`}
+            >
+                <i className="fa-solid fa-user"></i> Player Leaderboard
+            </button>
         </div>
-        <p className="my-4 text-orange-600 hidden"><strong><i className="fa-solid fa-triangle-exclamation"></i> Notice: </strong> Filtering by KD has been disabled to a bug, try again later.</p>
 
         {activeTab == 0 &&
           <TribeLeaderboard />

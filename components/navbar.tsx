@@ -26,24 +26,16 @@ const handleServerDropdown = () => setServerDropdown(!serverDropdown);
     </a>
     <button onClick={handleMobile} data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-white md:hidden hover:bg-mesa-orange focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
       <span className="sr-only">Open main menu</span>
-      <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+      <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
     </button>
     <div className={mobileMenu ? "w-full md:block md:w-auto" : "hidden w-full md:block md:w-auto"} id="navbar-default">
       <ul className="flex justify-center items-center flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 bg-bgray-bg">
       <li>
         <Link href="/" className="block py-2 pr-4 pl-3 text-white rounded text-white hover:text-mesa-orange md:p-0 font-bold transition-colors text-lg"><i className="fa-solid fa-home"></i> Home</Link>
       </li>
-      <li>
-        <div className="relative">
-          <button onClick={handleServerDropdown} className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 font-bold transition-colors text-lg"><i className="fa-solid fa-server"></i> Servers</button>
-          <div className={serverDropdown ? 'absolute z-50 mt-3 w-48 shadow-lg origin-top-left left-0 rounded-2xl' : 'hidden z-50 mt-3 w-48 shadow-lg origin-top-left left-0 rounded-2xl'}>
-            <div className="ring-1 ring-black ring-opacity-5 py-1 bg-mesa-dropdown rounded-2xl">
-            <Link className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out" href="/servers/4man">4 Man</Link>
-              <Link className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-100 hover:bg-mesa-gray focus:outline-none focus:bg-mesa-gray transition duration-150 ease-in-out" href="/servers/3man">3 Man</Link>
-            </div>
-          </div>
-        </div>
-      </li>
+        <li>
+          <Link href="/servers" className="block py-2 pr-4 pl-3 text-white rounded text-white hover:text-mesa-orange md:p-0 font-bold transition-colors text-lg"><i className="fa-solid fa-server"></i> Servers</Link>
+        </li>
       <li>
         <a href="https://shop.mesa-ark.com" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 font-bold transition-colors text-lg"><i className="fa-solid fa-shop"></i> Shop </a>
       </li>
@@ -51,7 +43,7 @@ const handleServerDropdown = () => setServerDropdown(!serverDropdown);
       <Link href="/leaderboards" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 font-bold transition-colors text-lg"><i className="fa-solid fa-trophy"></i> Leaderboards</Link>
       </li>
       <li>
-        <a href="https://discord.gg/mesasteam" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 font-bold transition-colors text-lg"><i className="fa-brands fa-discord"></i> Discord </a>
+        <a href="https://discord.gg/mesark-ascended" className="block py-2 pr-4 pl-3 text-white rounded hover:text-mesa-orange md:p-0 font-bold transition-colors text-lg"><i className="fa-brands fa-discord"></i> Discord </a>
       </li>
       <li className="hidden">
         <a href="https://shop.mesa-ark.com" className="block py-2 pr-4 pl-3 text-white bg-mesa-orange p-4 font-bold transition-colors">Login</a>

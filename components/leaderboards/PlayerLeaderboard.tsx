@@ -92,11 +92,11 @@ const PlayerLeaderboard = () => {
         <div className="my-2 flex space-x-4 items-center">
             <input value={search}
                 onChange={handleOnChange}
-                placeholder="Search for Players" name="tribe_search" id="tribe_search" className="px-3 py-2 text-gray-300 bg-bgray-overlay w-1/2 border-gray-700 border rounded-full" />
+                placeholder="Search for Players" name="tribe_search" id="tribe_search" className="px-3 py-2 text-gray-300 bg-bgray-overlay w-1/2 border-gray-700 border" />
 
-            <Dropdown dropdownTitle={`${clusterFilter == 0 ? '4' : '3'} Man`} dropdownItems={["4 Man", "3 Man"]} callback={handleClusterFilter}/>
+            <Dropdown dropdownIcon="fa-server" dropdownTitle={`${clusterFilter == 0 ? '4' : '3'} Man`} dropdownItems={["4 Man", "3 Man"]} callback={handleClusterFilter}/>
 
-            <Dropdown dropdownTitle={`Filter by : ${filter}`} dropdownItems={["Time Played", "Kills", "Deaths", "Tamed Dino Kills"]} callback={handleFilter}/>
+            <Dropdown dropdownIcon="fa-gears" dropdownTitle={`Filter by : ${filter}`} dropdownItems={["Time Played", "Kills", "Deaths", "Tamed Dino Kills"]} callback={handleFilter}/>
 
         </div>
         {/* Table */}
@@ -261,7 +261,9 @@ const PlayerLeaderboard = () => {
             ) : (
                 <>
                     {error ?
-                        <p>Error</p>
+                        <p className={'text-xl py-5 text-zinc-400'}>
+                            <span className={'text-orange-600'}><i className="fa-solid fa-triangle-exclamation"></i></span> We were unable to retrieve data from ARK! This could be due to a disconnected database or ongoing server wipes.
+                        </p>
                         : <div className="text-gray-700 px-4 py-3 mt-10" role="alert">
                             <div>
                                 <div className="text-gray-700 px-4 py-3 mt-10" role="alert">
