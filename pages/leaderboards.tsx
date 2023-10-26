@@ -9,8 +9,8 @@ import axios from "axios";
 import Footer from '../components/Footer'
 
 /* Leaderboard Components */
-import TribeLeaderboard from "../components/Leaderboards/TribeLeaderboard.tsx";
-import PlayerLeaderboard from "../components/Leaderboards/PlayerLeaderboard.tsx";
+import TribeLeaderboard from "../components/Leaderboards/TribeLeaderboard";
+import PlayerLeaderboard from "../components/Leaderboards/PlayerLeaderboard";
 
 const Leaderboards = () => {
 
