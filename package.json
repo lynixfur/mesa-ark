@@ -11,7 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.9",
     "@next/mdx": "^13.0.2",
-    "@prisma/client": "^4.6.0",
+    "@prisma/client": "^4.16.2",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
     "@types/react-syntax-highlighter": "^15.5.5",
